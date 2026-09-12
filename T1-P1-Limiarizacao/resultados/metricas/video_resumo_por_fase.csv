@@ -1,0 +1,29 @@
+﻿fase;metodo;iou_medio;f1_medio;instabilidade_%;limiar_medio
+1 - Iluminacao uniforme;Limiar fixo T=127;0,656537;0,792658;1,007559;127,000000
+2 - Holofote movel;Limiar fixo T=127;0,139778;0,245124;1,268316;127,000000
+3 - Escurecimento global;Limiar fixo T=127;0,635724;0,690368;1,855916;127,000000
+4 - Ruido + baixo contraste;Limiar fixo T=127;0,633662;0,769077;2,533789;127,000000
+1 - Iluminacao uniforme;Otsu global (por quadro);0,944327;0,971366;0,276494;146,673333
+2 - Holofote movel;Otsu global (por quadro);0,139323;0,244414;1,287133;124,753333
+3 - Escurecimento global;Otsu global (por quadro);0,942511;0,970404;0,779631;96,133333
+4 - Ruido + baixo contraste;Otsu global (por quadro);0,834261;0,903994;3,573898;154,000000
+1 - Iluminacao uniforme;Multi-Otsu (so a classe escura, t1);0,591758;0,743523;0,229691;82,000000
+2 - Holofote movel;Multi-Otsu (so a classe escura, t1);0,731212;0,839771;0,287780;52,166667
+3 - Escurecimento global;Multi-Otsu (so a classe escura, t1);0,599982;0,749895;0,301636;53,920000
+4 - Ruido + baixo contraste;Multi-Otsu (so a classe escura, t1);0,639265;0,778337;1,812346;119,933333
+1 - Iluminacao uniforme;Multi-Otsu (escura + media, t2);0,966059;0,982737;0,286360;176,000000
+2 - Holofote movel;Multi-Otsu (escura + media, t2);0,138402;0,243036;1,234484;131,093333
+3 - Escurecimento global;Multi-Otsu (escura + media, t2);0,964990;0,982182;0,809249;116,093333
+4 - Ruido + baixo contraste;Multi-Otsu (escura + media, t2);0,625870;0,714146;19,381118;185,826667
+1 - Iluminacao uniforme;Adaptativa gaussiana (b=35, C=10);0,621027;0,766202;0,628356;195,663541
+2 - Holofote movel;Adaptativa gaussiana (b=35, C=10);0,528426;0,691054;0,702773;85,311447
+3 - Escurecimento global;Adaptativa gaussiana (b=35, C=10);0,561056;0,717977;0,701964;126,189026
+4 - Ruido + baixo contraste;Adaptativa gaussiana (b=35, C=10);0,340832;0,497115;21,946024;185,724364
+1 - Iluminacao uniforme;Adaptativa AJUSTADA (b=151, C=10);0,971153;0,985365;0,290734;195,871436
+2 - Holofote movel;Adaptativa AJUSTADA (b=151, C=10);0,956048;0,977528;0,297146;85,313898
+3 - Escurecimento global;Adaptativa AJUSTADA (b=151, C=10);0,949609;0,974117;0,380441;126,325372
+4 - Ruido + baixo contraste;Adaptativa AJUSTADA (b=151, C=10);0,575261;0,709924;16,576510;185,853071
+1 - Iluminacao uniforme;Sauvola (local, media + desvio);0,787316;0,880974;0,514498;nan
+2 - Holofote movel;Sauvola (local, media + desvio);0,756674;0,861448;0,784512;nan
+3 - Escurecimento global;Sauvola (local, media + desvio);0,755847;0,860924;0,693661;nan
+4 - Ruido + baixo contraste;Sauvola (local, media + desvio);0,627450;0,763663;4,339240;nan

@@ -1,0 +1,8 @@
+# T1/P1 - Limiarizacao - Processamento de Imagens (UFMA)
+# Instalacao:  pip install -r requirements.txt
+# Testado com Python 3.11
+
+numpy>=1.24
+scikit-image>=0.20
+opencv-python>=4.5
+matplotlib>=3.6

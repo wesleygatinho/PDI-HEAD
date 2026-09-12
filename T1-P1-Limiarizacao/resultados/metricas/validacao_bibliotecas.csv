@@ -1,0 +1,5 @@
+﻿imagem;otsu_propria;otsu_skimage;otsu_opencv;multiotsu_propria;multiotsu_skimage;concordancia_adaptativa_%;separabilidade_eta
+01_camera;102;102;102;[87, 176];[87, 176];99,479675;0,857184
+02_moedas;107;107;107;[77, 139];[77, 139];99,265161;0,756404
+03_pagina;157;157;157;[114, 186];[114, 186];99,875927;0,718856
+04_sintetica;125;125;125;[74, 148];[74, 148];99,904622;0,595560

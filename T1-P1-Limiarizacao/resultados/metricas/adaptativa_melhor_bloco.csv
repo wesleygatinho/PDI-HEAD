@@ -1,0 +1,5 @@
+﻿fase;quadro;bloco_padrao;iou_padrao;melhor_bloco;melhor_iou
+1-Uniforme;60;35;0,627001;201;0,974948
+2-Holofote;225;35;0,532379;201;0,962922
+3-Escurecimento;390;35;0,569693;201;0,954598
+4-Ruido;555;35;0,239805;201;0,424737
