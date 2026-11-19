@@ -1,0 +1,8 @@
+# T5/P1 - Simulador de Espelho Corporal - Processamento de Imagens (UFMA)
+# Instalacao:  pip install -r requirements.txt
+# Testado com Python 3.11, mediapipe 1.2.3, opencv-python 5.0.0, numpy 2.4.6
+
+mediapipe>=1.0
+opencv-python>=4.8
+numpy>=1.26
+matplotlib>=3.6

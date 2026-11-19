@@ -1,0 +1,3 @@
+modelo,quadros_avaliados,landmarks_avaliados,pck_0.1,pck_0.2,quadros_corretos_pct,erro_medio_px,erro_mediano_px,erro_medio_tronco_pct,deteccao_pct,visibilidade_concorda_pct,pck_Rosto,pck_Tronco,pck_Braços,pck_Mãos,pck_Pernas,pck_Pés,pck_bracos_cima,pck_bracos_abertos,pck_bracos_cruzados,pck_agachar,pck_perfil,pck_uma_perna,pck_andar,pck_livre
+lite,1203,24376,99.032,99.754,99.086,11.634,9.716,2.887,100.0,99.647,100.0,99.9,99.53,98.92,nan,nan,98.29,100.0,100.0,100.0,100.0,100.0,100.0,99.56
+full,1203,24376,99.59,99.865,99.418,9.221,7.758,2.307,100.0,99.483,100.0,100.0,99.84,99.24,nan,nan,98.82,100.0,100.0,100.0,100.0,100.0,100.0,100.0

@@ -1,0 +1,4 @@
+modelo,quadros,duracao_s,fps,latencia_ms,latencia_p95_ms,inferencia_ms,captura_ms,deteccao_pct,trocas_deteccao,landmarks_visiveis,visibilidade,quadros_parados,tremor_bruto_px,tremor_suavizado_px
+lite,601,20.03,30.005,14.115,16.49,10.395,19.066,100.0,0,20.779,0.658,301,4.346,3.532
+full,601,20.032,30.003,17.546,18.55,13.728,15.64,100.0,0,24.053,0.686,300,3.262,2.127
+heavy,441,20.022,22.026,45.07,46.31,41.194,0.182,100.0,0,18.483,0.566,221,2.822,2.484

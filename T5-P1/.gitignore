@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+
+# Ambiente virtual
+.venv/
+venv/
+
+# Modelos do MediaPipe (baixados automaticamente na primeira execucao)
+modelos/
+
+# Videos gravados com --gravar-video (~2 MB por segundo; o GitHub recusa arquivos acima de 100 MB)
+# e o cache de landmarks do acuracia.py (refeito a partir do video quando falta)
+resultados/videos/
+
+# Auxiliares do LaTeX (o PDF dos slides fica versionado)
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.xdv
+*.synctex.gz
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
