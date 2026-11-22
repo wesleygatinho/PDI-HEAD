@@ -22,7 +22,11 @@ python -m venv .venv
 ```
 
 ```bash
-.venv\Scripts\activate
+.venv\Scripts\activate          # Windows
+```
+
+```bash
+source .venv/bin/activate        # Linux / macOS
 ```
 
 ```bash
@@ -63,7 +67,10 @@ python testar_camera.py
 ```
 
 O script mede o FPS real em várias combinações (sem salvar imagens) e imprime
-o comando `python espelho.py ...` recomendado.
+o comando `python espelho.py ...` recomendado. No Windows testa DirectShow e
+Media Foundation; no Linux, V4L2. Com pouca luz, a exposição automática da
+webcam aumenta e o FPS cai (medido no Linux: 15 FPS numa sala com luz fraca);
+acender a luz de frente para a pessoa resolve.
 
 ## Gravar e analisar as métricas
 
@@ -167,8 +174,8 @@ texto de cada slide, com o roteiro da demonstração, em
 [`apresentacao/script_de_fala.md`](apresentacao/script_de_fala.md).
 
 Duas figuras dos slides (`modos.png` e `lite_vs_full.png`) são feitas a partir
-de um vídeo gravado e não vêm no repositório; até existirem, os slides mostram
-um espaço reservado. Para criá-las, grave o vídeo de poses de corpo inteiro,
+de um vídeo de poses de corpo inteiro (o vídeo fica fora do git; as figuras já
+estão em `apresentacao/figuras/`). Para refazê-las com outro vídeo, grave,
 gere as figuras e recompile:
 
 ```bash
