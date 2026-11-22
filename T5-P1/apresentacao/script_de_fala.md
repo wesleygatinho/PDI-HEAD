@@ -24,7 +24,12 @@ Total: cerca de 7 min 30 s de slides e 3 min de demonstração.
 
 - Notebook ligado na tomada e com a webcam livre: nenhuma outra janela do
   espelho aberta.
-- Faça um teste rápido da câmera na sala:
+- Rode tudo no **mesmo notebook** em que os modelos já foram baixados
+  (pasta `modelos/`); assim não depende de internet na sala. Os números dos
+  slides foram medidos em outra máquina: num notebook mais lento o FPS ao vivo
+  fica abaixo de 30, e tudo bem, é só falar que depende do hardware.
+- Faça um teste rápido da câmera na sala (com a luz que vai ser usada; pouca
+  luz derruba o FPS da webcam):
 
 ```bash
 python testar_camera.py
@@ -152,8 +157,9 @@ python testar_camera.py
 ## Slide 6 · Onde o Lite falha · 30 s
 
 > Um exemplo. A pessoa está de lado, em uma perna. Em branco, o Heavy. À
-> esquerda, o Lite: o esqueleto escorrega para fora do corpo e quase nenhum
-> ponto bate. À direita, o Full, em cima do Heavy.
+> esquerda, o Lite: ele junta a perna levantada com a de apoio, e o joelho
+> e o pé dessa perna ficam no lugar errado. À direita, o Full, em cima do
+> Heavy.
 
 ---
 
@@ -198,7 +204,8 @@ Roteiro, nesta ordem:
    > Aqui é onde o Lite costuma se perder.
 5. **Tecla `F`.** Voltar para o Full na mesma pose.
 6. **Tecla `H`.** Heavy.
-   > Olhem o FPS caindo para perto de 22.
+   > Olhem o FPS caindo: o Heavy demora mais que o intervalo entre dois
+   > quadros da câmera.
 7. **Tecla `F` e depois `S`** para desligar a suavização, com a pessoa parada.
    > Sem o filtro, dá para ver os pontos tremendo. Com o `S` de novo, param.
 8. **`Q`** para sair.
