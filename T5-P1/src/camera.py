@@ -1,10 +1,13 @@
 """Abertura e configuracao da webcam com OpenCV."""
 from __future__ import annotations
 
+import sys
+
 import cv2
 
-BACKENDS = {"dshow": cv2.CAP_DSHOW, "msmf": cv2.CAP_MSMF, "qualquer": cv2.CAP_ANY}
-ORDEM_AUTO = ("dshow", "msmf", "qualquer")      # "auto" tenta nesta ordem
+BACKENDS = {"dshow": cv2.CAP_DSHOW, "msmf": cv2.CAP_MSMF, "v4l2": cv2.CAP_V4L2, "qualquer": cv2.CAP_ANY}
+# "auto" tenta nesta ordem (DirectShow/Media Foundation so existem no Windows)
+ORDEM_AUTO = ("dshow", "msmf", "qualquer") if sys.platform == "win32" else ("v4l2", "qualquer")
 
 
 def _abrir(indice, backend, fourcc, largura, altura):
@@ -29,8 +32,8 @@ def _abrir(indice, backend, fourcc, largura, altura):
 def abrir_camera(indice, backend="auto", fourcc="MJPG", largura=1280, altura=720):
     """Abre e configura a webcam. Devolve None se nao abrir ou nao entregar imagem.
 
-    backend="auto" tenta DirectShow (abre mais rapido no Windows), depois
-    Media Foundation, depois o que o OpenCV escolher.
+    backend="auto" tenta, no Windows, DirectShow (abre mais rapido), depois
+    Media Foundation; no Linux, V4L2; e por fim o que o OpenCV escolher.
     """
     for nome in (ORDEM_AUTO if backend == "auto" else (backend,)):
         cap = _abrir(indice, nome, fourcc, largura, altura)
