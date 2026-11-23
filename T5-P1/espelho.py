@@ -38,6 +38,15 @@ TECLAS_BLOQUEADAS_NO_ROTEIRO = {ord(c) for c in "lfhrse"}
 INTERVALO_TECLA_S = 0.7
 
 
+def janela_aberta() -> bool:
+    """False se a janela foi fechada no X. No Linux (OpenCV com Qt) a consulta a uma
+    janela ja fechada levanta cv2.error em vez de devolver 0."""
+    try:
+        return cv2.getWindowProperty(JANELA, cv2.WND_PROP_VISIBLE) >= 1
+    except cv2.error:
+        return False
+
+
 def ler_argumentos() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Simulador de Espelho Corporal (MediaPipe Pose + OpenCV)")
     p.add_argument("--camera", type=int, default=0, help="indice da webcam (padrao: 0)")
@@ -281,7 +290,7 @@ def main() -> None:
                     trocar_modelo(roteiro.etapa.modelo)
                     roteiro.iniciar_etapa(perf_counter())   # carregar o modelo nao gasta o tempo da etapa
 
-            if not args.sem_janela and cv2.getWindowProperty(JANELA, cv2.WND_PROP_VISIBLE) < 1:
+            if not args.sem_janela and not janela_aberta():
                 break                           # janela fechada no X
             if args.duracao and t_fim - t_inicio >= args.duracao:
                 break

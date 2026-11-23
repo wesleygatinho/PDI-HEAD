@@ -19,6 +19,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import font_manager
 
 RAIZ = Path(__file__).resolve().parent
 ORDEM_MODELOS = ("lite", "full", "heavy")
@@ -28,8 +29,10 @@ NAN = float("nan")
 SUPERFICIE, TINTA, TINTA2, MUDO, GRADE, EIXO = "#fcfcfb", "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
 AZUL, LARANJA, VERDE = "#2a78d6", "#eb6834", "#1baf7a"
 
+# Segoe UI so existe no Windows; sem ela o matplotlib avisaria a cada texto desenhado.
+_FONTES = {f.name for f in font_manager.fontManager.ttflist}
 plt.rcParams.update({
-    "font.family": ["Segoe UI", "DejaVu Sans"], "font.size": 10,
+    "font.family": [f for f in ("Segoe UI", "DejaVu Sans") if f in _FONTES] or ["sans-serif"], "font.size": 10,
     "figure.facecolor": SUPERFICIE, "axes.facecolor": SUPERFICIE, "savefig.facecolor": SUPERFICIE,
     "text.color": TINTA, "axes.labelcolor": TINTA2, "axes.edgecolor": EIXO,
     "xtick.color": MUDO, "ytick.color": MUDO, "xtick.labelcolor": TINTA2, "ytick.labelcolor": TINTA2,

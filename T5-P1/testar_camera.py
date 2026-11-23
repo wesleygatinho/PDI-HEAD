@@ -9,20 +9,29 @@ janela, e mostra qual configuracao usar no espelho.py. Nenhuma imagem e salva.
 from __future__ import annotations
 
 import argparse
+import sys
 from time import perf_counter
 
 from src.camera import abrir_camera, descrever_camera
 
-COMBINACOES = [
-    # backend, fourcc, largura, altura
-    ("dshow", "MJPG", 1280, 720),
-    ("dshow", "nenhum", 1280, 720),
-    ("dshow", "MJPG", 640, 480),
-    ("dshow", "nenhum", 640, 480),
-    ("msmf", "MJPG", 1280, 720),
-    ("msmf", "nenhum", 1280, 720),
-    ("msmf", "nenhum", 640, 480),
-]
+# backend, fourcc, largura, altura (a primeira e a configuracao padrao do espelho.py)
+if sys.platform == "win32":
+    COMBINACOES = [
+        ("dshow", "MJPG", 1280, 720),
+        ("dshow", "nenhum", 1280, 720),
+        ("dshow", "MJPG", 640, 480),
+        ("dshow", "nenhum", 640, 480),
+        ("msmf", "MJPG", 1280, 720),
+        ("msmf", "nenhum", 1280, 720),
+        ("msmf", "nenhum", 640, 480),
+    ]
+else:
+    COMBINACOES = [
+        ("v4l2", "MJPG", 1280, 720),
+        ("v4l2", "nenhum", 1280, 720),
+        ("v4l2", "MJPG", 640, 480),
+        ("v4l2", "nenhum", 640, 480),
+    ]
 AQUECIMENTO = 15      # quadros descartados (a camera ajusta exposicao no inicio)
 SEGUNDOS = 3.0
 
