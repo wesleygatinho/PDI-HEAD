@@ -1,0 +1,70 @@
+# Configuracao unica do experimento (Gray-Scott reaction-diffusion, The Well)
+# Todos os scripts leem este arquivo. Altere aqui, nunca dentro do codigo.
+
+seed: 42
+
+data:
+  hf_repo: polymathic-ai/gray_scott_reaction_diffusion
+  root: data                      # relativo a raiz do projeto
+  regimes:                        # nome curto -> arquivo (sem split)
+    gliders: gray_scott_reaction_diffusion_gliders_F_0.014_k_0.054.hdf5
+    bubbles: gray_scott_reaction_diffusion_bubbles_F_0.098_k_0.057.hdf5
+    maze:    gray_scott_reaction_diffusion_maze_F_0.029_k_0.057.hdf5
+    worms:   gray_scott_reaction_diffusion_worms_F_0.058_k_0.065.hdf5
+    spirals: gray_scott_reaction_diffusion_spirals_F_0.018_k_0.051.hdf5
+    spots:   gray_scott_reaction_diffusion_spots_F_0.03_k_0.062.hdf5
+  # Protocolo da turma: teto de 25 GB por dataset, priorizando diversidade de trajetorias e frames.
+  # Usam-se TODAS as trajetorias da divisao OFICIAL do The Well (160/20/20 por regime) e 21 instantes
+  # distribuidos ao longo de toda a trajetoria (n = 0, 50, ..., 1000): 1.200 x 21 x 2 campos x 64 KiB
+  # = 3,3 GB (< 25 GB). Os IDs e instantes selecionados sao salvos em data/subset_manifest.json.
+  trajectories_per_regime:
+    train: 160
+    valid: 20
+    test: 20
+  time_stride: 50                 # n = 0, 50, ..., 1000  -> 21 quadros por trajetoria
+  n_time_total: 1001
+
+ground_truth:
+  field: B                        # especie autocatalitica (onde a reacao ocorre)
+  reference_step: 500             # "frame medio" que caracteriza o fluido
+  method: otsu                    # limiar de Otsu calculado no frame de referencia
+  # o limiar tau de cada trajetoria e aplicado a todos os instantes -> evolucao temporal
+
+input:
+  fields: [A]                     # campo de entrada da rede (substrato A); GT vem de B
+  # Resolucao padronizada da turma: ~128x128 preservando a proporcao do fluido. O Gray-Scott
+  # ja e nativo 128x128 (o menor dataset 2D do The Well), entao NAO ha reamostragem: o campo
+  # entra na rede exatamente como simulado, em todas as arquiteturas (input_scale = 1).
+  resolution: [128, 128]
+  input_scale: 1
+
+preprocessing: [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10]   # P0 = baseline; P1-P10 do protocolo
+postprocessing: [Q0, Q1, Q2, Q3, Q4, Q5]   # Q0 = baseline sem pos; Q1-Q5 do protocolo
+architectures: [unet, segformer, mask2former]
+
+training:
+  # Padrao da turma: 20 epocas para todas as arquiteturas (1 epoca = 16.968 quadros de treino).
+  # Sem early stopping: as 20 epocas sao sempre executadas; o checkpoint usado e o de melhor
+  # Dice na validacao (avaliada ao fim de cada epoca).
+  epochs: 20
+  warmup_epochs: 1
+  batch_size: 32
+  lr:
+    unet: 3.0e-4
+    segformer: 2.0e-4
+    mask2former: 1.0e-4
+  weight_decay: 1.0e-4
+  amp: true
+  val_time_stride: 1              # selecao do checkpoint usa todos os instantes da validacao
+  # Mask2Former sem supervisao profunda (loss so na camada final do decodificador). Medido no pod
+  # (RTX A5000, ~7 CPUs): 2,67 s/iteracao com loss auxiliar vs 0,79 s sem -> ~35 h vs ~10 h no total.
+  mask2former_aux_loss: false
+  num_workers: 0
+
+eval:
+  visual_steps: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]   # visao geral
+  # tabela visual pedida: frame 0, dois intermediarios e frame final
+  #   n = 50  -> fase de organizacao (primeiro instante amostrado apos a condicao inicial)
+  #   n = 500 -> frame medio de referencia do GT (padrao caracterizado)
+  visual_table_steps: [0, 50, 500, 1000]
+  bootstrap_samples: 2000

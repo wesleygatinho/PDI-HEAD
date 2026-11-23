@@ -1,0 +1,25 @@
+[unet_P0_smoke] treino: 504 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=2 (30 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+  ep 01/2 loss 1.3241 val_dice 0.5242 (6s)
+  ep 02/2 loss 0.8926 val_dice 0.6912 (3s)
+[unet_P0_smoke] ok | best val dice 0.6912 (ep 2) | treino 0.1 min | lat 17.26 ms | mem treino 1078 MiB
+[unet_P2_smoke] treino: 504 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=2 (30 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+  ep 01/2 loss 1.3248 val_dice 0.5214 (6s)
+  ep 02/2 loss 0.8936 val_dice 0.6844 (3s)
+[unet_P2_smoke] ok | best val dice 0.6844 (ep 2) | treino 0.2 min | lat 17.57 ms | mem treino 1078 MiB
+[segformer_P0_smoke] treino: 504 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=2 (30 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+  ep 01/2 loss 1.1371 val_dice 0.5550 (17s)
+  ep 02/2 loss 0.6275 val_dice 0.7970 (6s)
+[segformer_P0_smoke] ok | best val dice 0.7970 (ep 2) | treino 0.4 min | lat 41.70 ms | mem treino 2238 MiB
+[segformer_P2_smoke] treino: 504 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=2 (30 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+  ep 01/2 loss 1.1282 val_dice 0.5564 (20s)
+  ep 02/2 loss 0.6224 val_dice 0.7993 (7s)
+[segformer_P2_smoke] ok | best val dice 0.7993 (ep 2) | treino 0.5 min | lat 42.60 ms | mem treino 2238 MiB
+[mask2former_P0_smoke] treino: 504 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=2 (30 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+  ep 01/2 loss 7.0659 val_dice 0.0656 (18s)
+  ep 02/2 loss 5.7875 val_dice 0.0830 (16s)
+[mask2former_P0_smoke] ok | best val dice 0.0830 (ep 2) | treino 0.6 min | lat 101.41 ms | mem treino 4518 MiB
+[mask2former_P2_smoke] treino: 504 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=2 (30 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+  ep 01/2 loss 6.8479 val_dice 0.1782 (15s)
+  ep 02/2 loss 6.0003 val_dice 0.2762 (17s)
+[mask2former_P2_smoke] ok | best val dice 0.2762 (ep 2) | treino 0.5 min | lat 98.57 ms | mem treino 4518 MiB
+6 modelos encontrados

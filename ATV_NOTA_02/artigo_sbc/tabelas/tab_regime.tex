@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Dice no teste por regime para cada arquitetura sozinha (P0+Q0), para a configuração final de cada arquitetura (pré + arquitetura + pós) e para a referência clássica. Vinte trajetórias por regime.}
+\label{tab:regime}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{sbcfitwidth}
+\begin{tabular}{lcccccc}
+\toprule
+Configuração & Gliders & Bubbles & Maze & Worms & Spirals & Spots \\
+\midrule
+E151 U-Net (P0+Q0) & 0{,}948 & 0{,}979 & 0{,}950 & 0{,}948 & 0{,}943 & 0{,}949 \\
+E006 U-Net (P2+Q1) & 0{,}963 & 0{,}981 & 0{,}959 & 0{,}956 & 0{,}955 & 0{,}958 \\
+E167 SegFormer (P0+Q0) & 0{,}927 & 0{,}952 & 0{,}865 & 0{,}868 & 0{,}905 & 0{,}833 \\
+E086 SegFormer (P8+Q1) & 0{,}941 & 0{,}952 & 0{,}859 & 0{,}866 & 0{,}912 & 0{,}829 \\
+E183 Mask2Former (P0+Q0) & 0{,}833 & 0{,}800 & 0{,}781 & 0{,}712 & 0{,}816 & 0{,}667 \\
+E122 Mask2Former (P5+Q2) & 0{,}850 & 0{,}803 & 0{,}795 & 0{,}726 & 0{,}835 & 0{,}692 \\
+\midrule
+REF Otsu em $A$ & 0{,}852 & 0{,}917 & 0{,}938 & 0{,}896 & 0{,}821 & 0{,}906 \\
+\bottomrule
+\end{tabular}
+\end{sbcfitwidth}
+\end{table}

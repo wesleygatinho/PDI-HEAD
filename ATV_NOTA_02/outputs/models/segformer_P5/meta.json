@@ -1,0 +1,22 @@
+{
+  "arch": "segformer",
+  "pre": "P5",
+  "name": "segformer_P5",
+  "seed": 42,
+  "params": 27341121,
+  "epochs_run": 20,
+  "best_epoch": 20,
+  "m2f_aux_loss": false,
+  "best_val_dice": 0.8945117052242343,
+  "train_time_s": 2063.3169932365417,
+  "input_scale": 1,
+  "peak_train_mem_mib": 2376.15087890625,
+  "latency_ms_b1": 16.20802866993472,
+  "peak_infer_mem_mib_b1": 227.16259765625,
+  "throughput_fps": 2022.1032504867603,
+  "batch_size": 32,
+  "gpu": "NVIDIA RTX A5000",
+  "amp": "torch.bfloat16",
+  "n_train_frames": 20160,
+  "benchmark": "isolated"
+}

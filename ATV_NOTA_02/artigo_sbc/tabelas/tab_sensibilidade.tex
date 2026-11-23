@@ -1,0 +1,30 @@
+\begin{table}[htbp]
+\centering
+\caption{Sensibilidade ao instante inicial: Dice médio no teste em todos os 21 instantes, apenas em $n=0$ e nos 20 instantes $n\geq50$, para as configurações selecionadas na validação. Média por trajetória, com IC de 95\% por \textit{bootstrap} estratificado por regime para $n\geq50$.}
+\label{tab:sensibilidade}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{sbcfitwidth}
+\begin{tabular}{lllccc}
+\toprule
+Exp. & Arquitetura & Condição & Dice (todos) & Dice ($n=0$) & Dice ($n\geq50$) \\
+\midrule
+E151 & U-Net & Arquitetura & 0{,}953 & 0{,}120 & 0{,}995\,{\scriptsize$\pm$0{,}001} \\
+E160 & U-Net & Pré + arquitetura & 0{,}955 & 0{,}153 & 0{,}995\,{\scriptsize$\pm$0{,}001} \\
+E152 & U-Net & Arquitetura + pós & 0{,}961 & 0{,}353 & 0{,}992\,{\scriptsize$\pm$0{,}001} \\
+E006 & U-Net & Pré + arquitetura + pós & 0{,}962 & 0{,}354 & 0{,}992\,{\scriptsize$\pm$0{,}001} \\
+\midrule
+E167 & SegFormer & Arquitetura & 0{,}892 & 0{,}100 & 0{,}931\,{\scriptsize$\pm$0{,}002} \\
+E180 & SegFormer & Pré + arquitetura & 0{,}892 & 0{,}100 & 0{,}932\,{\scriptsize$\pm$0{,}002} \\
+E168 & SegFormer & Arquitetura + pós & 0{,}893 & 0{,}357 & 0{,}919\,{\scriptsize$\pm$0{,}003} \\
+E086 & SegFormer & Pré + arquitetura + pós & 0{,}893 & 0{,}357 & 0{,}920\,{\scriptsize$\pm$0{,}003} \\
+\midrule
+E183 & Mask2Former & Arquitetura & 0{,}768 & 0{,}102 & 0{,}801\,{\scriptsize$\pm$0{,}009} \\
+E193 & Mask2Former & Pré + arquitetura & 0{,}782 & 0{,}353 & 0{,}803\,{\scriptsize$\pm$0{,}009} \\
+E185 & Mask2Former & Arquitetura + pós & 0{,}769 & 0{,}101 & 0{,}802\,{\scriptsize$\pm$0{,}009} \\
+E122 & Mask2Former & Pré + arquitetura + pós & 0{,}784 & 0{,}353 & 0{,}805\,{\scriptsize$\pm$0{,}009} \\
+\midrule
+REF & Otsu em $A$ & Referência clássica & 0{,}888 & 0{,}241 & 0{,}921\,{\scriptsize$\pm$0{,}008} \\
+\bottomrule
+\end{tabular}
+\end{sbcfitwidth}
+\end{table}

@@ -1,0 +1,22 @@
+{
+  "arch": "mask2former",
+  "pre": "P10",
+  "name": "mask2former_P10",
+  "seed": 42,
+  "params": 47398525,
+  "epochs_run": 20,
+  "best_epoch": 8,
+  "m2f_aux_loss": false,
+  "best_val_dice": 0.7757887283674652,
+  "train_time_s": 7020.606280326843,
+  "input_scale": 1,
+  "peak_train_mem_mib": 4525.267578125,
+  "latency_ms_b1": 38.140354530187324,
+  "peak_infer_mem_mib_b1": 287.1494140625,
+  "throughput_fps": 550.810511859944,
+  "batch_size": 32,
+  "gpu": "NVIDIA RTX A5000",
+  "amp": "torch.bfloat16",
+  "n_train_frames": 20160,
+  "benchmark": "isolated"
+}

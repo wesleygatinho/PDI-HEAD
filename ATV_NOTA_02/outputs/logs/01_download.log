@@ -1,0 +1,36 @@
+  train/gliders: 2000/6720 quadros
+  train/gliders: 4000/6720 quadros
+  train/gliders: 6000/6720 quadros
+[baixado] train_gliders.npz: 160 traj x 21 passos (420 MiB em 35s)
+  train/bubbles: 2000/6720 quadros
+  train/bubbles: 4000/6720 quadros
+  train/bubbles: 6000/6720 quadros
+[baixado] train_bubbles.npz: 160 traj x 21 passos (420 MiB em 33s)
+  train/maze: 2000/6720 quadros
+  train/maze: 4000/6720 quadros
+  train/maze: 6000/6720 quadros
+[baixado] train_maze.npz: 160 traj x 21 passos (420 MiB em 32s)
+  train/worms: 2000/6720 quadros
+  train/worms: 4000/6720 quadros
+  train/worms: 6000/6720 quadros
+[baixado] train_worms.npz: 160 traj x 21 passos (420 MiB em 33s)
+  train/spirals: 2000/6720 quadros
+  train/spirals: 4000/6720 quadros
+  train/spirals: 6000/6720 quadros
+[baixado] train_spirals.npz: 160 traj x 21 passos (420 MiB em 33s)
+  train/spots: 2000/6720 quadros
+  train/spots: 4000/6720 quadros
+  train/spots: 6000/6720 quadros
+[baixado] train_spots.npz: 160 traj x 21 passos (420 MiB em 31s)
+[baixado] valid_gliders.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_bubbles.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_maze.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_worms.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_spirals.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_spots.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_gliders.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_bubbles.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_maze.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_worms.npz: 20 traj x 21 passos (52 MiB em 7s)
+[baixado] test_spirals.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_spots.npz: 20 traj x 21 passos (52 MiB em 6s)

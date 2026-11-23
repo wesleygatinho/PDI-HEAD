@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\caption{Tamanho e custo das arquiteturas na entrada de referência (P0): parâmetros, tempo de treino de 20 épocas com até cinco treinos simultâneos na mesma GPU, época selecionada na validação, memória máxima de GPU no treino (lote 32) e na inferência (lote 1), latência (lote 1) e vazão (lote 32), estas medidas com a GPU dedicada. NVIDIA RTX A5000.}
+\label{tab:custo}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{sbcfitwidth}
+\begin{tabular}{lccccccc}
+\toprule
+Arquitetura & Parâm. (M) & Treino (min) & Época & Mem. treino (MiB) & Mem. inf. (MiB) & Latência (ms) & Vazão (quadros/s) \\
+\midrule
+U-Net & 24{,}4 & 20{,}5 & 20/20 & 878 & 170 & 5{,}58 & 4932 \\
+SegFormer & 27{,}3 & 34{,}6 & 20/20 & 2376 & 227 & 15{,}61 & 2073 \\
+Mask2Former & 47{,}4 & 272{,}6 & 2/20 & 4526 & 287 & 38{,}63 & 552 \\
+\bottomrule
+\end{tabular}
+\end{sbcfitwidth}
+\end{table}

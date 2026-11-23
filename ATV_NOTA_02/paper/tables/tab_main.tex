@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering
+\caption{Main results on the test set (\texttt{gray\_scott\_reaction\_diffusion}): the three implemented architectures alone, with pre-processing, with post-processing, and with pre-processing + post-processing. Mean over test trajectories with the half-width of the 95\% bootstrap CI (stratified by regime). Pre- and post-processing of each condition were selected on the validation split by mean Dice. Latency: network + post-processing per $128\times128$ frame (batch 1). Best value per column in bold. Codes in Table~\ref{tab:methods}.}
+\label{tab:main}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllllccccc@{}}
+\toprule
+Exp. & Condition & Pre-proc. & Architecture & Post-proc. & IoU $\uparrow$ & Dice $\uparrow$ & Precision $\uparrow$ & Recall $\uparrow$ & Latency (ms) $\downarrow$ \\
+\midrule
+E151 & Architecture only & P0 & U-Net & Q0 & 0.947{\scriptsize$\pm$0.002} & 0.953{\scriptsize$\pm$0.002} & 0.956{\scriptsize$\pm$0.002} & 0.954{\scriptsize$\pm$0.002} & 5.62 \\
+E160 & Pre + arch. & P4 & U-Net & Q0 & 0.949{\scriptsize$\pm$0.002} & 0.955{\scriptsize$\pm$0.002} & \textbf{0.958{\scriptsize$\pm$0.002}} & 0.954{\scriptsize$\pm$0.002} & 5.77 \\
+E152 & Arch. + post & P0 & U-Net & Q1 & 0.949{\scriptsize$\pm$0.002} & 0.961{\scriptsize$\pm$0.002} & 0.950{\scriptsize$\pm$0.002} & 0.996{\scriptsize$\pm$0.001} & 5.63 \\
+E006 & Pre + arch. + post & P2 & U-Net & Q1 & \textbf{0.950{\scriptsize$\pm$0.002}} & \textbf{0.962{\scriptsize$\pm$0.002}} & 0.951{\scriptsize$\pm$0.002} & \textbf{0.997{\scriptsize$\pm$0.000}} & 5.70 \\
+\midrule
+E167 & Architecture only & P0 & SegFormer & Q0 & 0.837{\scriptsize$\pm$0.004} & 0.892{\scriptsize$\pm$0.003} & 0.890{\scriptsize$\pm$0.003} & 0.894{\scriptsize$\pm$0.003} & 15.64 \\
+E180 & Pre + arch. & P8 & SegFormer & Q0 & 0.838{\scriptsize$\pm$0.004} & 0.892{\scriptsize$\pm$0.003} & 0.890{\scriptsize$\pm$0.003} & 0.895{\scriptsize$\pm$0.003} & 16.14 \\
+E168 & Arch. + post & P0 & SegFormer & Q1 & 0.826{\scriptsize$\pm$0.005} & 0.893{\scriptsize$\pm$0.003} & 0.844{\scriptsize$\pm$0.004} & 0.973{\scriptsize$\pm$0.001} & 15.66 \\
+E086 & Pre + arch. + post & P8 & SegFormer & Q1 & 0.826{\scriptsize$\pm$0.005} & 0.893{\scriptsize$\pm$0.003} & 0.845{\scriptsize$\pm$0.004} & 0.973{\scriptsize$\pm$0.001} & 16.16 \\
+\midrule
+E183 & Architecture only & P0 & Mask2Former & Q0 & 0.649{\scriptsize$\pm$0.014} & 0.768{\scriptsize$\pm$0.009} & 0.748{\scriptsize$\pm$0.009} & 0.792{\scriptsize$\pm$0.009} & 38.66 \\
+E193 & Pre + arch. & P5 & Mask2Former & Q0 & 0.659{\scriptsize$\pm$0.014} & 0.782{\scriptsize$\pm$0.009} & 0.739{\scriptsize$\pm$0.010} & 0.857{\scriptsize$\pm$0.007} & 43.46 \\
+E185 & Arch. + post & P0 & Mask2Former & Q2 & 0.650{\scriptsize$\pm$0.014} & 0.769{\scriptsize$\pm$0.009} & 0.758{\scriptsize$\pm$0.009} & 0.782{\scriptsize$\pm$0.009} & 39.05 \\
+E122 & Pre + arch. + post & P5 & Mask2Former & Q2 & 0.661{\scriptsize$\pm$0.014} & 0.784{\scriptsize$\pm$0.009} & 0.749{\scriptsize$\pm$0.010} & 0.848{\scriptsize$\pm$0.008} & 43.85 \\
+\midrule
+REF & Classical reference & -- & Otsu on $A$ & -- & 0.826{\scriptsize$\pm$0.013} & 0.888{\scriptsize$\pm$0.008} & 0.833{\scriptsize$\pm$0.013} & 0.967{\scriptsize$\pm$0.002} & 0.30 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

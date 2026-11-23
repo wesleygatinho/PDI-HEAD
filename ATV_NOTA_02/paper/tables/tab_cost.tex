@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Model size and training cost (20 epochs, batch 32, native $128\times128$ input; reference input P0). Latency and throughput measured with a dedicated GPU.}
+\label{tab:cost}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Architecture & Params (M) & Train (min) & Best epoch & Train mem. (MiB) & Latency (ms) & Throughput (fps) \\
+\midrule
+U-Net & 24.4 & 20.5 & 20/20 & 878 & 5.58 & 4932 \\
+SegFormer & 27.3 & 34.6 & 20/20 & 2376 & 15.61 & 2073 \\
+Mask2Former & 47.4 & 272.6 & 2/20 & 4526 & 38.63 & 552 \\
+\bottomrule
+\end{tabular}}
+\\[2pt]\footnotesize GPU: RTX A5000
+\end{table}

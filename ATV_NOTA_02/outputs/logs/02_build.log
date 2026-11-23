@@ -1,0 +1,44 @@
+  gliders: 90/160 trajetorias com padrao em t=500; tau reserva = 0.1103
+  bubbles: 160/160 trajetorias com padrao em t=500; tau reserva = 0.2077
+  maze: 160/160 trajetorias com padrao em t=500; tau reserva = 0.1629
+  worms: 160/160 trajetorias com padrao em t=500; tau reserva = 0.1737
+  spirals: 156/160 trajetorias com padrao em t=500; tau reserva = 0.1286
+  spots: 160/160 trajetorias com padrao em t=500; tau reserva = 0.1601
+[train] 960 trajetorias x 21 passos | fracao positiva GT = 0.269 | Otsu degenerado em 74 trajetorias
+[valid] 120 trajetorias x 21 passos | fracao positiva GT = 0.265 | Otsu degenerado em 12 trajetorias
+[test] 120 trajetorias x 21 passos | fracao positiva GT = 0.277 | Otsu degenerado em 9 trajetorias
+manifesto: /workspace/ATV_NOTA_02/data/subset_manifest.json (3.3 GB)
+  P0 train: 2.9s
+  P0 valid: 0.3s
+  P0 test: 0.3s
+  P1 train: 4.1s
+  P1 valid: 0.4s
+  P1 test: 0.6s
+  P2 train: 2.4s
+  P2 valid: 0.4s
+  P2 test: 0.3s
+  P3 train: 2.7s
+  P3 valid: 0.3s
+  P3 test: 0.4s
+  P4 train: 2.8s
+  P4 valid: 0.4s
+  P4 test: 0.4s
+  P5 train: 2.7s
+  P5 valid: 0.4s
+  P5 test: 0.3s
+  P6 train: 6.5s
+  P6 valid: 0.9s
+  P6 test: 0.9s
+  P7 train: 26.5s
+  P7 valid: 3.7s
+  P7 test: 3.3s
+  P8 train: 5.3s
+  P8 valid: 0.7s
+  P8 test: 0.7s
+  P9 train: 124.5s
+  P9 valid: 14.9s
+  P9 test: 15.1s
+  P10 train: 31.9s
+  P10 valid: 4.1s
+  P10 test: 4.0s
+ok

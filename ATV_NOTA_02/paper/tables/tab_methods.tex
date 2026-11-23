@@ -1,0 +1,30 @@
+\begin{table}[h!]
+\centering
+\caption{Codes of the pre-processing (P) and post-processing (Q) methods used in all tables. Statistics of P1--P5 come from the training split; parameters marked ``validation'' are selected on the validation split.}
+\label{tab:methods}
+\scriptsize
+\begin{tabular}{@{}lp{0.34\linewidth}p{0.56\linewidth}@{}}
+\toprule
+Code & Method & Parameters \\
+\midrule
+P0 & Baseline (dimensionless raw field, no spatial filter) & dimensionless concentration A, native 128x128 \\
+P1 & Z-score normalization & mean/std of training set \\
+P2 & RMS normalization & x / RMS, RMS = sqrt(mean(x$^2$)) of training set \\
+P3 & Robust scaling (median/IQR) & median/IQR of training set \\
+P4 & Min-max normalization & min/max of training set \\
+P5 & Percentile clipping (1-99\%) & clip to [p1, p99] of training set (no rescaling) \\
+P6 & Gaussian smoothing & sigma = 1.0 px, periodic \\
+P7 & Median filtering & 3x3 window, periodic \\
+P8 & Bilateral filtering & d = 5, sigma\_color = 0.1, sigma\_space = 2.0, periodic \\
+P9 & Anisotropic diffusion (Perona-Malik) & 15 iterations, kappa = 0.05, gamma = 0.2, exponential conductance, periodic \\
+P10 & Wavelet denoising & Daubechies-4, BayesShrink soft thresholding, 3 levels \\
+\midrule
+Q0 & Baseline (p $>$ 0.5) & threshold 0.5 \\
+Q1 & Threshold optimization & threshold in \{0.05, ..., 0.95\}, selected on validation \\
+Q2 & Morphological opening & disk structuring element, radius in \{1, 2\}, selected on validation \\
+Q3 & Morphological closing & disk structuring element, radius in \{1, 2\}, selected on validation \\
+Q4 & Connected-component filtering & remove 4-connected components with area $<$ a\_min, a\_min in \{2, ..., 32\} px, selected on validation \\
+Q5 & Temporal consistency filtering & median of the probabilities over w consecutive sampled frames, w in \{3, 5\}, selected on validation \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,22 @@
+{
+  "arch": "unet",
+  "pre": "P4",
+  "name": "unet_P4",
+  "seed": 42,
+  "params": 24430097,
+  "epochs_run": 20,
+  "best_epoch": 17,
+  "m2f_aux_loss": false,
+  "best_val_dice": 0.9545321481286241,
+  "train_time_s": 1217.0351901054382,
+  "input_scale": 1,
+  "peak_train_mem_mib": 878.18017578125,
+  "latency_ms_b1": 5.73411755496636,
+  "peak_infer_mem_mib_b1": 170.09228515625,
+  "throughput_fps": 4973.4171640830355,
+  "batch_size": 32,
+  "gpu": "NVIDIA RTX A5000",
+  "amp": "torch.bfloat16",
+  "n_train_frames": 20160,
+  "benchmark": "isolated"
+}

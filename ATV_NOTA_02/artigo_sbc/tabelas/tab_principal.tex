@@ -1,0 +1,30 @@
+\begin{table}[htbp]
+\centering
+\caption{Resultados no teste (120 trajetórias, 2.520 quadros) nas quatro condições do experimento. Valores médios por trajetória, com a meia-amplitude do intervalo de confiança de 95\% por \textit{bootstrap} estratificado por regime. O pré e o pós-processamento de cada condição foram escolhidos pelo Dice médio na validação. Latência: rede + pós-processamento por quadro de $128\times128$, lote 1, RTX A5000. Em negrito, o maior valor de cada coluna.}
+\label{tab:principal}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{sbcfitwidth}
+\begin{tabular}{lllllccccc}
+\toprule
+Exp. & Condição & Pré & Arquitetura & Pós & IoU & Dice & Precisão & Revocação & Latência (ms) \\
+\midrule
+E151 & Arquitetura & P0 & U-Net & Q0 & 0{,}947\,{\scriptsize$\pm$0{,}002} & 0{,}953\,{\scriptsize$\pm$0{,}002} & 0{,}956\,{\scriptsize$\pm$0{,}002} & 0{,}954\,{\scriptsize$\pm$0{,}002} & 5{,}62 \\
+E160 & Pré + arquitetura & P4 & U-Net & Q0 & 0{,}949\,{\scriptsize$\pm$0{,}002} & 0{,}955\,{\scriptsize$\pm$0{,}002} & \textbf{0{,}958\,{\scriptsize$\pm$0{,}002}} & 0{,}954\,{\scriptsize$\pm$0{,}002} & 5{,}77 \\
+E152 & Arquitetura + pós & P0 & U-Net & Q1 & 0{,}949\,{\scriptsize$\pm$0{,}002} & 0{,}961\,{\scriptsize$\pm$0{,}002} & 0{,}950\,{\scriptsize$\pm$0{,}002} & 0{,}996\,{\scriptsize$\pm$0{,}001} & 5{,}63 \\
+E006 & Pré + arquitetura + pós & P2 & U-Net & Q1 & \textbf{0{,}950\,{\scriptsize$\pm$0{,}002}} & \textbf{0{,}962\,{\scriptsize$\pm$0{,}002}} & 0{,}951\,{\scriptsize$\pm$0{,}002} & \textbf{0{,}997\,{\scriptsize$\pm$0{,}000}} & 5{,}70 \\
+\midrule
+E167 & Arquitetura & P0 & SegFormer & Q0 & 0{,}837\,{\scriptsize$\pm$0{,}004} & 0{,}892\,{\scriptsize$\pm$0{,}003} & 0{,}890\,{\scriptsize$\pm$0{,}003} & 0{,}894\,{\scriptsize$\pm$0{,}003} & 15{,}64 \\
+E180 & Pré + arquitetura & P8 & SegFormer & Q0 & 0{,}838\,{\scriptsize$\pm$0{,}004} & 0{,}892\,{\scriptsize$\pm$0{,}003} & 0{,}890\,{\scriptsize$\pm$0{,}003} & 0{,}895\,{\scriptsize$\pm$0{,}003} & 16{,}14 \\
+E168 & Arquitetura + pós & P0 & SegFormer & Q1 & 0{,}826\,{\scriptsize$\pm$0{,}005} & 0{,}893\,{\scriptsize$\pm$0{,}003} & 0{,}844\,{\scriptsize$\pm$0{,}004} & 0{,}973\,{\scriptsize$\pm$0{,}001} & 15{,}66 \\
+E086 & Pré + arquitetura + pós & P8 & SegFormer & Q1 & 0{,}826\,{\scriptsize$\pm$0{,}005} & 0{,}893\,{\scriptsize$\pm$0{,}003} & 0{,}845\,{\scriptsize$\pm$0{,}004} & 0{,}973\,{\scriptsize$\pm$0{,}001} & 16{,}16 \\
+\midrule
+E183 & Arquitetura & P0 & Mask2Former & Q0 & 0{,}649\,{\scriptsize$\pm$0{,}014} & 0{,}768\,{\scriptsize$\pm$0{,}009} & 0{,}748\,{\scriptsize$\pm$0{,}009} & 0{,}792\,{\scriptsize$\pm$0{,}009} & 38{,}66 \\
+E193 & Pré + arquitetura & P5 & Mask2Former & Q0 & 0{,}659\,{\scriptsize$\pm$0{,}014} & 0{,}782\,{\scriptsize$\pm$0{,}009} & 0{,}739\,{\scriptsize$\pm$0{,}010} & 0{,}857\,{\scriptsize$\pm$0{,}007} & 43{,}46 \\
+E185 & Arquitetura + pós & P0 & Mask2Former & Q2 & 0{,}650\,{\scriptsize$\pm$0{,}014} & 0{,}769\,{\scriptsize$\pm$0{,}009} & 0{,}758\,{\scriptsize$\pm$0{,}009} & 0{,}782\,{\scriptsize$\pm$0{,}009} & 39{,}05 \\
+E122 & Pré + arquitetura + pós & P5 & Mask2Former & Q2 & 0{,}661\,{\scriptsize$\pm$0{,}014} & 0{,}784\,{\scriptsize$\pm$0{,}009} & 0{,}749\,{\scriptsize$\pm$0{,}010} & 0{,}848\,{\scriptsize$\pm$0{,}008} & 43{,}85 \\
+\midrule
+REF & Referência clássica & -- & Otsu em $A$ & -- & 0{,}826\,{\scriptsize$\pm$0{,}013} & 0{,}888\,{\scriptsize$\pm$0{,}008} & 0{,}833\,{\scriptsize$\pm$0{,}013} & 0{,}967\,{\scriptsize$\pm$0{,}002} & 0{,}30 \\
+\bottomrule
+\end{tabular}
+\end{sbcfitwidth}
+\end{table}

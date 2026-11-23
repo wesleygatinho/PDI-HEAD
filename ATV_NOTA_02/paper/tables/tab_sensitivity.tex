@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\caption{Sensitivity to the initial snapshot: mean test Dice over all 21 snapshots, at $n=0$ only and over the 20 snapshots $n\geq50$, for the configurations selected on validation. Mean over trajectories; 95\% stratified bootstrap CI for $n\geq50$.}
+\label{tab:sensitivity}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lllccc@{}}
+\toprule
+Exp. & Architecture & Condition & Dice (all) & Dice ($n=0$) & Dice ($n\geq50$) \\
+\midrule
+E151 & U-Net & Architecture only & 0.953 & 0.120 & 0.995{\scriptsize$\pm$0.001} \\
+E160 & U-Net & Pre + arch. & 0.955 & 0.153 & 0.995{\scriptsize$\pm$0.001} \\
+E152 & U-Net & Arch. + post & 0.961 & 0.353 & 0.992{\scriptsize$\pm$0.001} \\
+E006 & U-Net & Pre + arch. + post & 0.962 & 0.354 & 0.992{\scriptsize$\pm$0.001} \\
+\midrule
+E167 & SegFormer & Architecture only & 0.892 & 0.100 & 0.931{\scriptsize$\pm$0.002} \\
+E180 & SegFormer & Pre + arch. & 0.892 & 0.100 & 0.932{\scriptsize$\pm$0.002} \\
+E168 & SegFormer & Arch. + post & 0.893 & 0.357 & 0.919{\scriptsize$\pm$0.003} \\
+E086 & SegFormer & Pre + arch. + post & 0.893 & 0.357 & 0.920{\scriptsize$\pm$0.003} \\
+\midrule
+E183 & Mask2Former & Architecture only & 0.768 & 0.102 & 0.801{\scriptsize$\pm$0.009} \\
+E193 & Mask2Former & Pre + arch. & 0.782 & 0.353 & 0.803{\scriptsize$\pm$0.009} \\
+E185 & Mask2Former & Arch. + post & 0.769 & 0.101 & 0.802{\scriptsize$\pm$0.009} \\
+E122 & Mask2Former & Pre + arch. + post & 0.784 & 0.353 & 0.805{\scriptsize$\pm$0.009} \\
+\midrule
+REF & Otsu on $A$ & Classical reference & 0.888 & 0.241 & 0.921{\scriptsize$\pm$0.008} \\
+\bottomrule
+\end{tabular}}
+\end{table}

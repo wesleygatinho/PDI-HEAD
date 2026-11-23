@@ -1,0 +1,22 @@
+{
+  "arch": "segformer",
+  "pre": "P8",
+  "name": "segformer_P8",
+  "seed": 42,
+  "params": 27341121,
+  "epochs_run": 20,
+  "best_epoch": 20,
+  "m2f_aux_loss": false,
+  "best_val_dice": 0.8950717497307996,
+  "train_time_s": 1710.9504351615906,
+  "input_scale": 1,
+  "peak_train_mem_mib": 2376.15087890625,
+  "latency_ms_b1": 16.1133166498621,
+  "peak_infer_mem_mib_b1": 227.16259765625,
+  "throughput_fps": 1903.8395680691485,
+  "batch_size": 32,
+  "gpu": "NVIDIA RTX A5000",
+  "amp": "torch.bfloat16",
+  "n_train_frames": 20160,
+  "benchmark": "isolated"
+}

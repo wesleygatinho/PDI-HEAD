@@ -1,0 +1,22 @@
+{
+  "arch": "segformer",
+  "pre": "P7",
+  "name": "segformer_P7",
+  "seed": 42,
+  "params": 27341121,
+  "epochs_run": 20,
+  "best_epoch": 19,
+  "m2f_aux_loss": false,
+  "best_val_dice": 0.8944451360694371,
+  "train_time_s": 1705.4602687358856,
+  "input_scale": 1,
+  "peak_train_mem_mib": 2376.15087890625,
+  "latency_ms_b1": 16.283159845042974,
+  "peak_infer_mem_mib_b1": 227.16259765625,
+  "throughput_fps": 2004.4769868719852,
+  "batch_size": 32,
+  "gpu": "NVIDIA RTX A5000",
+  "amp": "torch.bfloat16",
+  "n_train_frames": 20160,
+  "benchmark": "isolated"
+}

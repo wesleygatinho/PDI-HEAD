@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering
+\caption{Métricas temporais no teste para as configurações da Tabela~\ref{tab:principal}. AVE: erro de variação de área (\% do domínio por instante amostrado); CDE: erro de deslocamento dos centroides das estruturas (px, distância periódica); TC: consistência temporal das máscaras, com o valor do GT na última linha; TCE $=|TC_{pred}-TC_{GT}|$. Média $\pm$ meia-amplitude do IC de 95\%.}
+\label{tab:temporal}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{sbcfitwidth}
+\begin{tabular}{lllcccc}
+\toprule
+Exp. & Arquitetura & Condição & AVE (\%) & CDE (px) & TC & TCE \\
+\midrule
+E151 & U-Net & Arquitetura & 0{,}764\,{\scriptsize$\pm$0{,}050} & 2{,}68\,{\scriptsize$\pm$0{,}34} & 0{,}686 & 0{,}010\,{\scriptsize$\pm$0{,}002} \\
+E160 & U-Net & Pré + arquitetura & 0{,}593\,{\scriptsize$\pm$0{,}068} & 2{,}16\,{\scriptsize$\pm$0{,}34} & 0{,}683 & 0{,}007\,{\scriptsize$\pm$0{,}001} \\
+E152 & U-Net & Arquitetura + pós & 3{,}554\,{\scriptsize$\pm$0{,}142} & 1{,}57\,{\scriptsize$\pm$0{,}22} & 0{,}691 & 0{,}009\,{\scriptsize$\pm$0{,}001} \\
+E006 & U-Net & Pré + arquitetura + pós & 3{,}579\,{\scriptsize$\pm$0{,}148} & 1{,}42\,{\scriptsize$\pm$0{,}21} & 0{,}691 & 0{,}008\,{\scriptsize$\pm$0{,}001} \\
+\midrule
+E167 & SegFormer & Arquitetura & 0{,}892\,{\scriptsize$\pm$0{,}049} & 7{,}16\,{\scriptsize$\pm$0{,}69} & 0{,}685 & 0{,}013\,{\scriptsize$\pm$0{,}002} \\
+E180 & SegFormer & Pré + arquitetura & 0{,}891\,{\scriptsize$\pm$0{,}050} & 7{,}18\,{\scriptsize$\pm$0{,}67} & 0{,}685 & 0{,}013\,{\scriptsize$\pm$0{,}002} \\
+E168 & SegFormer & Arquitetura + pós & 3{,}870\,{\scriptsize$\pm$0{,}147} & 7{,}85\,{\scriptsize$\pm$0{,}62} & 0{,}698 & 0{,}014\,{\scriptsize$\pm$0{,}001} \\
+E086 & SegFormer & Pré + arquitetura + pós & 3{,}868\,{\scriptsize$\pm$0{,}148} & 7{,}91\,{\scriptsize$\pm$0{,}60} & 0{,}697 & 0{,}014\,{\scriptsize$\pm$0{,}001} \\
+\midrule
+E183 & Mask2Former & Arquitetura & 1{,}203\,{\scriptsize$\pm$0{,}055} & 9{,}47\,{\scriptsize$\pm$0{,}64} & 0{,}686 & 0{,}014\,{\scriptsize$\pm$0{,}002} \\
+E193 & Mask2Former & Pré + arquitetura & 4{,}083\,{\scriptsize$\pm$0{,}142} & 7{,}13\,{\scriptsize$\pm$0{,}65} & 0{,}697 & 0{,}012\,{\scriptsize$\pm$0{,}001} \\
+E185 & Mask2Former & Arquitetura + pós & 1{,}196\,{\scriptsize$\pm$0{,}055} & 9{,}95\,{\scriptsize$\pm$0{,}76} & 0{,}684 & 0{,}015\,{\scriptsize$\pm$0{,}002} \\
+E122 & Mask2Former & Pré + arquitetura + pós & 4{,}104\,{\scriptsize$\pm$0{,}141} & 7{,}45\,{\scriptsize$\pm$0{,}81} & 0{,}695 & 0{,}010\,{\scriptsize$\pm$0{,}001} \\
+\midrule
+REF & Otsu em $A$ & -- & 1{,}761\,{\scriptsize$\pm$0{,}127} & 3{,}17\,{\scriptsize$\pm$0{,}43} & 0{,}710 & 0{,}027\,{\scriptsize$\pm$0{,}003} \\
+GT & Referência & -- & -- & -- & 0{,}689 & -- \\
+\bottomrule
+\end{tabular}
+\end{sbcfitwidth}
+\end{table}

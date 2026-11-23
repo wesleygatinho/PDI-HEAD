@@ -1,0 +1,15 @@
+Experiment            Architecture   Condition Pre Post      IoU     Dice  Precision   Recall  Latency_total_ms
+      E151                   U-Net No pre/post  P0   Q0 0.947465 0.952955   0.955831 0.953914          5.615755
+      E160                   U-Net         Pre  P4   Q0 0.948566 0.954671   0.957566 0.954471          5.769837
+      E152                   U-Net        Post  P0   Q1 0.948861 0.961375   0.949966 0.996489          5.628016
+      E006                   U-Net    Pre+Post  P2   Q1 0.950001 0.961992   0.951264 0.996714          5.700665
+      E167               SegFormer No pre/post  P0   Q0 0.837377 0.891802   0.889603 0.894168         15.642550
+      E180               SegFormer         Pre  P8   Q0 0.838323 0.892370   0.890163 0.894745         16.144488
+      E168               SegFormer        Post  P0   Q1 0.825529 0.892510   0.844190 0.972640         15.659949
+      E086               SegFormer    Pre+Post  P8   Q1 0.826357 0.893032   0.844974 0.972754         16.156201
+      E183             Mask2Former No pre/post  P0   Q0 0.649125 0.768157   0.747919 0.791623         38.658253
+      E193             Mask2Former         Pre  P5   Q0 0.658580 0.781850   0.739077 0.856629         43.455679
+      E185             Mask2Former        Post  P0   Q2 0.649501 0.768650   0.758005 0.781874         39.048431
+      E122             Mask2Former    Pre+Post  P5   Q2 0.660634 0.783582   0.749300 0.848073         43.852084
+       REF Otsu on A (no learning)   Reference  P0   Q0 0.825898 0.888211   0.832559 0.966598          0.303683
+tabelas/figuras em /workspace/ATV_NOTA_02/paper

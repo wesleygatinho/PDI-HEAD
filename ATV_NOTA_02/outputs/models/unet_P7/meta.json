@@ -1,0 +1,22 @@
+{
+  "arch": "unet",
+  "pre": "P7",
+  "name": "unet_P7",
+  "seed": 42,
+  "params": 24430097,
+  "epochs_run": 20,
+  "best_epoch": 13,
+  "m2f_aux_loss": false,
+  "best_val_dice": 0.9490515633955023,
+  "train_time_s": 1214.7655806541443,
+  "input_scale": 1,
+  "peak_train_mem_mib": 878.18017578125,
+  "latency_ms_b1": 5.957485185062978,
+  "peak_infer_mem_mib_b1": 170.09228515625,
+  "throughput_fps": 4949.691259085739,
+  "batch_size": 32,
+  "gpu": "NVIDIA RTX A5000",
+  "amp": "torch.bfloat16",
+  "n_train_frames": 20160,
+  "benchmark": "isolated"
+}

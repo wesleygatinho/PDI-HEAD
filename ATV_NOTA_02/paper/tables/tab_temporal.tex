@@ -1,0 +1,30 @@
+\begin{table*}[t]
+\centering
+\caption{Temporal and memory metrics on the test set for the configurations of Table~\ref{tab:main}. AVE: area-variation error (\% of the domain per sampled step); CDE: structure-centroid displacement error (pixels, periodic distance); TC: temporal consistency of the masks (ground-truth value in the last row); TCE $=|TC_{pred}-TC_{GT}|$; memory: peak GPU memory at inference (batch 1).}
+\label{tab:temporal}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllcccccc@{}}
+\toprule
+Exp. & Architecture & Condition & AVE (\%) $\downarrow$ & CDE (px) $\downarrow$ & TC & TCE $\downarrow$ & Memory (MiB) $\downarrow$ \\
+\midrule
+E151 & U-Net & Architecture only & 0.764{\scriptsize$\pm$0.050} & 2.68{\scriptsize$\pm$0.34} & 0.686 & 0.010{\scriptsize$\pm$0.002} & 170 \\
+E160 & U-Net & Pre + arch. & 0.593{\scriptsize$\pm$0.068} & 2.16{\scriptsize$\pm$0.34} & 0.683 & 0.007{\scriptsize$\pm$0.001} & 170 \\
+E152 & U-Net & Arch. + post & 3.554{\scriptsize$\pm$0.142} & 1.57{\scriptsize$\pm$0.22} & 0.691 & 0.009{\scriptsize$\pm$0.001} & 170 \\
+E006 & U-Net & Pre + arch. + post & 3.579{\scriptsize$\pm$0.148} & 1.42{\scriptsize$\pm$0.21} & 0.691 & 0.008{\scriptsize$\pm$0.001} & 170 \\
+\midrule
+E167 & SegFormer & Architecture only & 0.892{\scriptsize$\pm$0.049} & 7.16{\scriptsize$\pm$0.69} & 0.685 & 0.013{\scriptsize$\pm$0.002} & 227 \\
+E180 & SegFormer & Pre + arch. & 0.891{\scriptsize$\pm$0.050} & 7.18{\scriptsize$\pm$0.67} & 0.685 & 0.013{\scriptsize$\pm$0.002} & 227 \\
+E168 & SegFormer & Arch. + post & 3.870{\scriptsize$\pm$0.147} & 7.85{\scriptsize$\pm$0.62} & 0.698 & 0.014{\scriptsize$\pm$0.001} & 227 \\
+E086 & SegFormer & Pre + arch. + post & 3.868{\scriptsize$\pm$0.148} & 7.91{\scriptsize$\pm$0.60} & 0.697 & 0.014{\scriptsize$\pm$0.001} & 227 \\
+\midrule
+E183 & Mask2Former & Architecture only & 1.203{\scriptsize$\pm$0.055} & 9.47{\scriptsize$\pm$0.64} & 0.686 & 0.014{\scriptsize$\pm$0.002} & 287 \\
+E193 & Mask2Former & Pre + arch. & 4.083{\scriptsize$\pm$0.142} & 7.13{\scriptsize$\pm$0.65} & 0.697 & 0.012{\scriptsize$\pm$0.001} & 287 \\
+E185 & Mask2Former & Arch. + post & 1.196{\scriptsize$\pm$0.055} & 9.95{\scriptsize$\pm$0.76} & 0.684 & 0.015{\scriptsize$\pm$0.002} & 287 \\
+E122 & Mask2Former & Pre + arch. + post & 4.104{\scriptsize$\pm$0.141} & 7.45{\scriptsize$\pm$0.81} & 0.695 & 0.010{\scriptsize$\pm$0.001} & 287 \\
+\midrule
+REF & Otsu on $A$ & -- & 1.761{\scriptsize$\pm$0.127} & 3.17{\scriptsize$\pm$0.43} & 0.710 & 0.027{\scriptsize$\pm$0.003} & -- \\
+GT & Ground truth & -- & -- & -- & 0.689 & -- & -- \\
+\bottomrule
+\end{tabular}}
+\end{table*}

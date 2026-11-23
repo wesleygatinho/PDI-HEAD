@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering
+\caption{Effect of each technique in isolation: paired difference of test Dice (in Dice points $\times100$) with respect to the architecture alone (P0+Q0), computed on the same test trajectories, with the 95\% stratified bootstrap CI. Bold: CI does not contain zero (the technique significantly improves, $\blacktriangle$, or worsens, $\blacktriangledown$, the segmentation).}
+\label{tab:delta}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Code & Technique & U-Net & SegFormer & Mask2Former \\
+\midrule
+P1 & Z-score normalization & \textbf{-0.11 [-0.15, -0.07]}$\blacktriangledown$ & \textbf{+0.03 [+0.03, +0.04]}$\blacktriangle$ & \textbf{+0.13 [+0.11, +0.15]}$\blacktriangle$ \\
+P2 & RMS normalization & \textbf{+0.15 [+0.10, +0.19]}$\blacktriangle$ & +0.00 [-0.00, +0.01] & \textbf{+0.17 [+0.14, +0.21]}$\blacktriangle$ \\
+P3 & Robust scaling (median/IQR) & \textbf{-0.08 [-0.11, -0.05]}$\blacktriangledown$ & \textbf{+0.03 [+0.02, +0.04]}$\blacktriangle$ & \textbf{+0.05 [+0.02, +0.08]}$\blacktriangle$ \\
+P4 & Min-max normalization & \textbf{+0.17 [+0.10, +0.25]}$\blacktriangle$ & -0.00 [-0.01, +0.00] & +0.16 [-0.06, +0.40] \\
+P5 & Percentile clipping (1-99\%) & \textbf{-0.10 [-0.13, -0.07]}$\blacktriangledown$ & -0.00 [-0.01, +0.00] & \textbf{+1.37 [+1.30, +1.45]}$\blacktriangle$ \\
+P6 & Gaussian smoothing & \textbf{-0.09 [-0.12, -0.06]}$\blacktriangledown$ & \textbf{-0.04 [-0.05, -0.03]}$\blacktriangledown$ & \textbf{+0.55 [+0.41, +0.68]}$\blacktriangle$ \\
+P7 & Median filtering & \textbf{-0.64 [-1.07, -0.31]}$\blacktriangledown$ & -0.01 [-0.01, +0.00] & \textbf{+0.25 [+0.17, +0.32]}$\blacktriangle$ \\
+P8 & Bilateral filtering & \textbf{-0.15 [-0.18, -0.12]}$\blacktriangledown$ & \textbf{+0.06 [+0.05, +0.06]}$\blacktriangle$ & +0.00 [-0.02, +0.03] \\
+P9 & Anisotropic diffusion (Perona-Malik) & \textbf{-0.49 [-0.54, -0.44]}$\blacktriangledown$ & +0.00 [-0.01, +0.02] & \textbf{+0.15 [+0.13, +0.17]}$\blacktriangle$ \\
+P10 & Wavelet denoising & +0.03 [-0.03, +0.08] & \textbf{+0.00 [+0.00, +0.01]}$\blacktriangle$ & \textbf{+0.07 [+0.04, +0.10]}$\blacktriangle$ \\
+\midrule
+Q1 & Threshold optimization & \textbf{+0.84 [+0.76, +0.92]}$\blacktriangle$ & +0.07 [-0.03, +0.18] & -0.01 [-0.04, +0.03] \\
+Q2 & Morphological opening & \textbf{-1.28 [-1.46, -1.11]}$\blacktriangledown$ & \textbf{-0.25 [-0.39, -0.11]}$\blacktriangledown$ & \textbf{+0.05 [+0.03, +0.07]}$\blacktriangle$ \\
+Q3 & Morphological closing & \textbf{-0.18 [-0.20, -0.16]}$\blacktriangledown$ & \textbf{+0.10 [+0.09, +0.11]}$\blacktriangle$ & \textbf{-0.03 [-0.05, -0.01]}$\blacktriangledown$ \\
+Q4 & Connected-component filtering & \textbf{-0.00 [-0.00, -0.00]}$\blacktriangledown$ & \textbf{+0.00 [+0.00, +0.00]}$\blacktriangle$ & \textbf{+0.00 [+0.00, +0.00]}$\blacktriangle$ \\
+Q5 & Temporal consistency filtering & \textbf{-11.29 [-13.15, -9.21]}$\blacktriangledown$ & \textbf{-10.58 [-12.37, -8.59]}$\blacktriangledown$ & \textbf{-8.63 [-10.08, -7.04]}$\blacktriangledown$ \\
+\bottomrule
+\end{tabular}}
+\end{table*}

@@ -1,0 +1,32 @@
+\begin{table}[htbp]
+\centering
+\caption{Códigos dos métodos de pré-processamento (P) e de pós-processamento (Q) usados nas tabelas. As estatísticas de P1--P5 vêm do treino; os parâmetros indicados como escolhidos na validação maximizam o Dice médio nesse conjunto.}
+\label{tab:metodos}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{sbcfitwidth}
+\begin{tabular}{lll}
+\toprule
+Código & Método & Parâmetros \\
+\midrule
+P0 & Baseline (campo bruto) & concentração adimensional $A$, $128	imes128$, sem filtro \\
+P1 & Normalização 	extit{z-score} & média e desvio padrão do treino \\
+P2 & Normalização RMS & $x/\mathrm{RMS}$, com $\mathrm{RMS}=\sqrt{\overline{x^2}}$ do treino \\
+P3 & Escalonamento robusto & mediana e intervalo interquartil do treino \\
+P4 & Normalização mín--máx & mínimo e máximo do treino \\
+P5 & Recorte por percentis & recorte em $[p_1,p_{99}]$ do treino, sem reescala \\
+P6 & Suavização gaussiana & $\sigma=1$ px, contorno periódico \\
+P7 & Filtro de mediana & janela $3	imes3$, contorno periódico \\
+P8 & Filtro bilateral & $d=5$, $\sigma_r=0{,}1$, $\sigma_s=2$, contorno periódico \\
+P9 & Difusão anisotrópica & Perona--Malik, 15 iterações, $\kappa=0{,}05$, $\gamma=0{,}2$ \\
+P10 & Remoção de ruído por 	extit{wavelets} & Daubechies-4, BayesShrink, 3 níveis \\
+\midrule
+Q0 & Baseline (sem pós) & decisão $P>0{,}5$ \\
+Q1 & Otimização do limiar & limiar em $\{0{,}05,\dots,0{,}95\}$, na validação \\
+Q2 & Abertura morfológica & disco de raio $r\in\{1,2\}$, na validação \\
+Q3 & Fechamento morfológico & disco de raio $r\in\{1,2\}$, na validação \\
+Q4 & Filtragem de componentes conexos & área mínima em $\{2,\dots,32\}$ px, na validação \\
+Q5 & Filtragem de consistência temporal & mediana de $w\in\{3,5\}$ instantes amostrados, na validação \\
+\bottomrule
+\end{tabular}
+\end{sbcfitwidth}
+\end{table}

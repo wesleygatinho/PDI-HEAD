@@ -1,0 +1,205 @@
+python: /workspace/ATV_NOTA_02/.venv/bin/python
+CPUs disponiveis (cota do container): 7
+== 1/5 download do subconjunto (Sun Nov 22 23:54:48 UTC 2026)
+  train/gliders: 2000/6720 quadros
+  train/gliders: 4000/6720 quadros
+  train/gliders: 6000/6720 quadros
+[baixado] train_gliders.npz: 160 traj x 21 passos (420 MiB em 35s)
+  train/bubbles: 2000/6720 quadros
+  train/bubbles: 4000/6720 quadros
+  train/bubbles: 6000/6720 quadros
+[baixado] train_bubbles.npz: 160 traj x 21 passos (420 MiB em 33s)
+  train/maze: 2000/6720 quadros
+  train/maze: 4000/6720 quadros
+  train/maze: 6000/6720 quadros
+[baixado] train_maze.npz: 160 traj x 21 passos (420 MiB em 32s)
+  train/worms: 2000/6720 quadros
+  train/worms: 4000/6720 quadros
+  train/worms: 6000/6720 quadros
+[baixado] train_worms.npz: 160 traj x 21 passos (420 MiB em 33s)
+  train/spirals: 2000/6720 quadros
+  train/spirals: 4000/6720 quadros
+  train/spirals: 6000/6720 quadros
+[baixado] train_spirals.npz: 160 traj x 21 passos (420 MiB em 33s)
+  train/spots: 2000/6720 quadros
+  train/spots: 4000/6720 quadros
+  train/spots: 6000/6720 quadros
+[baixado] train_spots.npz: 160 traj x 21 passos (420 MiB em 31s)
+[baixado] valid_gliders.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_bubbles.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_maze.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_worms.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_spirals.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] valid_spots.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_gliders.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_bubbles.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_maze.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_worms.npz: 20 traj x 21 passos (52 MiB em 7s)
+[baixado] test_spirals.npz: 20 traj x 21 passos (52 MiB em 6s)
+[baixado] test_spots.npz: 20 traj x 21 passos (52 MiB em 6s)
+== 2/5 ground truth + pre-processamentos (Sun Nov 22 23:59:30 UTC 2026)
+  gliders: 90/160 trajetorias com padrao em t=500; tau reserva = 0.1103
+  bubbles: 160/160 trajetorias com padrao em t=500; tau reserva = 0.2077
+  maze: 160/160 trajetorias com padrao em t=500; tau reserva = 0.1629
+  worms: 160/160 trajetorias com padrao em t=500; tau reserva = 0.1737
+  spirals: 156/160 trajetorias com padrao em t=500; tau reserva = 0.1286
+  spots: 160/160 trajetorias com padrao em t=500; tau reserva = 0.1601
+[train] 960 trajetorias x 21 passos | fracao positiva GT = 0.269 | Otsu degenerado em 74 trajetorias
+[valid] 120 trajetorias x 21 passos | fracao positiva GT = 0.265 | Otsu degenerado em 12 trajetorias
+[test] 120 trajetorias x 21 passos | fracao positiva GT = 0.277 | Otsu degenerado em 9 trajetorias
+manifesto: /workspace/ATV_NOTA_02/data/subset_manifest.json (3.3 GB)
+  P0 train: 2.9s
+  P0 valid: 0.3s
+  P0 test: 0.3s
+  P1 train: 4.1s
+  P1 valid: 0.4s
+  P1 test: 0.6s
+  P2 train: 2.4s
+  P2 valid: 0.4s
+  P2 test: 0.3s
+  P3 train: 2.7s
+  P3 valid: 0.3s
+  P3 test: 0.4s
+  P4 train: 2.8s
+  P4 valid: 0.4s
+  P4 test: 0.4s
+  P5 train: 2.7s
+  P5 valid: 0.4s
+  P5 test: 0.3s
+  P6 train: 6.5s
+  P6 valid: 0.9s
+  P6 test: 0.9s
+  P7 train: 26.5s
+  P7 valid: 3.7s
+  P7 test: 3.3s
+  P8 train: 5.3s
+  P8 valid: 0.7s
+  P8 test: 0.7s
+  P9 train: 124.5s
+  P9 valid: 14.9s
+  P9 test: 15.1s
+  P10 train: 31.9s
+  P10 valid: 4.1s
+  P10 test: 4.0s
+ok
+== 3/5 treinamento: 20 epocas, entrada 128x128 nativa, 5 filas em paralelo (Mon Nov 23 00:04:27 UTC 2026)
+[unet_P0] ok | best val dice 0.9526 (ep 20) | treino 20.5 min | lat 6.73 ms | mem treino 878 MiB
+[segformer_P0] ok | best val dice 0.8945 (ep 20) | treino 34.6 min | lat 17.91 ms | mem treino 2376 MiB
+[unet_P1] ok | best val dice 0.9519 (ep 17) | treino 20.1 min | lat 5.99 ms | mem treino 878 MiB
+[unet_P2] ok | best val dice 0.9542 (ep 19) | treino 20.4 min | lat 6.63 ms | mem treino 882 MiB
+[segformer_P1] ok | best val dice 0.8948 (ep 20) | treino 34.4 min | lat 17.99 ms | mem treino 2376 MiB
+[unet_P3] ok | best val dice 0.9520 (ep 19) | treino 20.1 min | lat 6.92 ms | mem treino 882 MiB
+[unet_P4] ok | best val dice 0.9545 (ep 17) | treino 20.3 min | lat 6.77 ms | mem treino 878 MiB
+[segformer_P2] ok | best val dice 0.8945 (ep 20) | treino 34.0 min | lat 22.17 ms | mem treino 2376 MiB
+[unet_P5] ok | best val dice 0.9519 (ep 18) | treino 20.3 min | lat 6.78 ms | mem treino 878 MiB
+[segformer_P3] ok | best val dice 0.8948 (ep 20) | treino 34.3 min | lat 16.53 ms | mem treino 2376 MiB
+[unet_P6] ok | best val dice 0.9518 (ep 19) | treino 19.9 min | lat 6.60 ms | mem treino 878 MiB
+[unet_P7] ok | best val dice 0.9491 (ep 13) | treino 20.2 min | lat 8.94 ms | mem treino 878 MiB
+[segformer_P4] ok | best val dice 0.8945 (ep 20) | treino 34.4 min | lat 18.42 ms | mem treino 2376 MiB
+[unet_P8] ok | best val dice 0.9513 (ep 15) | treino 20.2 min | lat 6.43 ms | mem treino 878 MiB
+[unet_P9] ok | best val dice 0.9479 (ep 15) | treino 20.3 min | lat 6.67 ms | mem treino 878 MiB
+[segformer_P5] ok | best val dice 0.8945 (ep 20) | treino 34.4 min | lat 17.87 ms | mem treino 2376 MiB
+[unet_P10] ok | best val dice 0.9528 (ep 11) | treino 20.3 min | lat 7.18 ms | mem treino 878 MiB
+[segformer_P6] ok | best val dice 0.8941 (ep 20) | treino 31.4 min | lat 16.08 ms | mem treino 2376 MiB
+[segformer_P7] ok | best val dice 0.8944 (ep 19) | treino 28.4 min | lat 15.94 ms | mem treino 2376 MiB
+[mask2former_P0] ok | best val dice 0.7760 (ep 2) | treino 272.6 min | lat 49.56 ms | mem treino 4526 MiB
+[mask2former_P4] ok | best val dice 0.7772 (ep 1) | treino 272.6 min | lat 50.35 ms | mem treino 4526 MiB
+[mask2former_P8] ok | best val dice 0.7753 (ep 5) | treino 272.6 min | lat 53.54 ms | mem treino 4525 MiB
+[segformer_P8] ok | best val dice 0.8951 (ep 20) | treino 28.5 min | lat 16.33 ms | mem treino 2376 MiB
+[segformer_P9] ok | best val dice 0.8945 (ep 20) | treino 27.9 min | lat 15.72 ms | mem treino 2376 MiB
+[segformer_P10] ok | best val dice 0.8945 (ep 20) | treino 28.4 min | lat 15.24 ms | mem treino 2376 MiB
+[mask2former_P1] ok | best val dice 0.7771 (ep 2) | treino 149.0 min | lat 50.71 ms | mem treino 4524 MiB
+[mask2former_P5] ok | best val dice 0.7893 (ep 1) | treino 149.0 min | lat 48.80 ms | mem treino 4526 MiB
+[mask2former_P9] ok | best val dice 0.7773 (ep 2) | treino 149.5 min | lat 40.71 ms | mem treino 4525 MiB
+[mask2former_P2] ok | best val dice 0.7771 (ep 5) | treino 116.5 min | lat 47.05 ms | mem treino 4527 MiB
+[mask2former_P6] ok | best val dice 0.7809 (ep 1) | treino 116.5 min | lat 46.45 ms | mem treino 4526 MiB
+[mask2former_P10] ok | best val dice 0.7758 (ep 8) | treino 117.0 min | lat 54.71 ms | mem treino 4525 MiB
+[mask2former_P7] ok | best val dice 0.7783 (ep 1) | treino 79.7 min | lat 46.93 ms | mem treino 4524 MiB
+[mask2former_P3] ok | best val dice 0.7757 (ep 9) | treino 79.9 min | lat 39.45 ms | mem treino 4526 MiB
+== 3b/5 latencia e memoria medidas com a GPU dedicada (Mon Nov 23 10:26:43 UTC 2026)
+[unet_P0] benchmark isolado: 5.58 ms/quadro | 4932 fps (bs 32) | 170 MiB
+[unet_P1] benchmark isolado: 6.04 ms/quadro | 4804 fps (bs 32) | 170 MiB
+[unet_P2] benchmark isolado: 5.65 ms/quadro | 4949 fps (bs 32) | 170 MiB
+[unet_P3] benchmark isolado: 6.29 ms/quadro | 4945 fps (bs 32) | 170 MiB
+[unet_P4] benchmark isolado: 5.73 ms/quadro | 4973 fps (bs 32) | 170 MiB
+[unet_P5] benchmark isolado: 5.51 ms/quadro | 4956 fps (bs 32) | 170 MiB
+[unet_P6] benchmark isolado: 5.42 ms/quadro | 4960 fps (bs 32) | 170 MiB
+[unet_P7] benchmark isolado: 5.96 ms/quadro | 4950 fps (bs 32) | 170 MiB
+[unet_P8] benchmark isolado: 5.40 ms/quadro | 5010 fps (bs 32) | 170 MiB
+[unet_P9] benchmark isolado: 5.90 ms/quadro | 4990 fps (bs 32) | 170 MiB
+[unet_P10] benchmark isolado: 5.80 ms/quadro | 4896 fps (bs 32) | 170 MiB
+[segformer_P0] benchmark isolado: 15.61 ms/quadro | 2073 fps (bs 32) | 227 MiB
+[segformer_P1] benchmark isolado: 15.61 ms/quadro | 2067 fps (bs 32) | 227 MiB
+[segformer_P2] benchmark isolado: 15.70 ms/quadro | 1984 fps (bs 32) | 227 MiB
+[segformer_P3] benchmark isolado: 15.37 ms/quadro | 2092 fps (bs 32) | 227 MiB
+[segformer_P4] benchmark isolado: 15.33 ms/quadro | 2018 fps (bs 32) | 227 MiB
+[segformer_P5] benchmark isolado: 16.21 ms/quadro | 2022 fps (bs 32) | 227 MiB
+[segformer_P6] benchmark isolado: 18.24 ms/quadro | 1853 fps (bs 32) | 227 MiB
+[segformer_P7] benchmark isolado: 16.28 ms/quadro | 2004 fps (bs 32) | 227 MiB
+[segformer_P8] benchmark isolado: 16.11 ms/quadro | 1904 fps (bs 32) | 227 MiB
+[segformer_P9] benchmark isolado: 15.77 ms/quadro | 1996 fps (bs 32) | 227 MiB
+[segformer_P10] benchmark isolado: 16.27 ms/quadro | 1983 fps (bs 32) | 227 MiB
+[mask2former_P0] benchmark isolado: 38.63 ms/quadro | 552 fps (bs 32) | 287 MiB
+[mask2former_P1] benchmark isolado: 40.13 ms/quadro | 551 fps (bs 32) | 287 MiB
+[mask2former_P2] benchmark isolado: 38.92 ms/quadro | 553 fps (bs 32) | 287 MiB
+[mask2former_P3] benchmark isolado: 40.34 ms/quadro | 551 fps (bs 32) | 287 MiB
+[mask2former_P4] benchmark isolado: 39.16 ms/quadro | 552 fps (bs 32) | 287 MiB
+[mask2former_P5] benchmark isolado: 43.43 ms/quadro | 547 fps (bs 32) | 287 MiB
+[mask2former_P6] benchmark isolado: 39.90 ms/quadro | 551 fps (bs 32) | 287 MiB
+[mask2former_P7] benchmark isolado: 39.81 ms/quadro | 551 fps (bs 32) | 287 MiB
+[mask2former_P8] benchmark isolado: 38.74 ms/quadro | 552 fps (bs 32) | 287 MiB
+[mask2former_P9] benchmark isolado: 38.64 ms/quadro | 552 fps (bs 32) | 287 MiB
+[mask2former_P10] benchmark isolado: 38.14 ms/quadro | 551 fps (bs 32) | 287 MiB
+== 4/5 pos-processamento + metricas (Mon Nov 23 10:36:23 UTC 2026)
+33 modelos encontrados
+[ok] unet_P5 (84s)
+[ok] unet_P0 (85s)
+[ok] unet_P1 (86s)
+[ok] unet_P3 (86s)
+[ok] unet_P2 (86s)
+[ok] unet_P4 (87s)
+[ok] unet_P6 (82s)
+[ok] unet_P7 (84s)
+[ok] unet_P9 (84s)
+[ok] unet_P8 (85s)
+[ok] unet_P10 (85s)
+[ok] segformer_P0 (85s)
+[ok] segformer_P1 (82s)
+[ok] segformer_P2 (84s)
+[ok] segformer_P5 (83s)
+[ok] segformer_P6 (83s)
+[ok] segformer_P4 (85s)
+[ok] segformer_P3 (86s)
+[ok] segformer_P7 (81s)
+[ok] segformer_P8 (82s)
+[ok] mask2former_P1 (80s)
+[ok] mask2former_P0 (82s)
+[ok] segformer_P10 (85s)
+[ok] segformer_P9 (86s)
+[ok] mask2former_P2 (82s)
+[ok] mask2former_P4 (82s)
+[ok] mask2former_P3 (84s)
+[ok] mask2former_P5 (85s)
+[ok] mask2former_P7 (81s)
+[ok] mask2former_P6 (82s)
+[ok] mask2former_P8 (81s)
+[ok] mask2former_P10 (81s)
+[ok] mask2former_P9 (82s)
+resultados em /workspace/ATV_NOTA_02/outputs/results
+== 5/5 tabelas e figuras (Mon Nov 23 10:44:57 UTC 2026)
+Experiment            Architecture   Condition Pre Post      IoU     Dice  Precision   Recall  Latency_total_ms
+      E151                   U-Net No pre/post  P0   Q0 0.947465 0.952955   0.955831 0.953914          5.615755
+      E160                   U-Net         Pre  P4   Q0 0.948566 0.954671   0.957566 0.954471          5.769837
+      E152                   U-Net        Post  P0   Q1 0.948861 0.961375   0.949966 0.996489          5.628016
+      E006                   U-Net    Pre+Post  P2   Q1 0.950001 0.961992   0.951264 0.996714          5.700665
+      E167               SegFormer No pre/post  P0   Q0 0.837377 0.891802   0.889603 0.894168         15.642550
+      E180               SegFormer         Pre  P8   Q0 0.838323 0.892370   0.890163 0.894745         16.144488
+      E168               SegFormer        Post  P0   Q1 0.825529 0.892510   0.844190 0.972640         15.659949
+      E086               SegFormer    Pre+Post  P8   Q1 0.826357 0.893032   0.844974 0.972754         16.156201
+      E183             Mask2Former No pre/post  P0   Q0 0.649125 0.768157   0.747919 0.791623         38.658253
+      E193             Mask2Former         Pre  P5   Q0 0.658580 0.781850   0.739077 0.856629         43.455679
+      E185             Mask2Former        Post  P0   Q2 0.649501 0.768650   0.758005 0.781874         39.048431
+      E122             Mask2Former    Pre+Post  P5   Q2 0.660634 0.783582   0.749300 0.848073         43.852084
+       REF Otsu on A (no learning)   Reference  P0   Q0 0.825898 0.888211   0.832559 0.966598          0.303683
+tabelas/figuras em /workspace/ATV_NOTA_02/paper
+== fim (Mon Nov 23 11:20:05 UTC 2026). Baixe: outputs/results, outputs/models/*/meta.json e history.csv, paper/figures, paper/tables

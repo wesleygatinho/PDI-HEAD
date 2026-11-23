@@ -1,0 +1,27 @@
+[segformer_P10] treino: 20160 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=20 (12600 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+Some weights of SegformerForSemanticSegmentation were not initialized from the model checkpoint at nvidia/mit-b2 and are newly initialized: ['decode_head.batch_norm.bias', 'decode_head.batch_norm.num_batches_tracked', 'decode_head.batch_norm.running_mean', 'decode_head.batch_norm.running_var', 'decode_head.batch_norm.weight', 'decode_head.classifier.bias', 'decode_head.classifier.weight', 'decode_head.linear_c.0.proj.bias', 'decode_head.linear_c.0.proj.weight', 'decode_head.linear_c.1.proj.bias', 'decode_head.linear_c.1.proj.weight', 'decode_head.linear_c.2.proj.bias', 'decode_head.linear_c.2.proj.weight', 'decode_head.linear_c.3.proj.bias', 'decode_head.linear_c.3.proj.weight', 'decode_head.linear_fuse.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/workspace/ATV_NOTA_02/scripts/03_train_predict.py:172: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
+  tl += float(loss)
+  ep 01/20 loss 0.4937 val_dice 0.8738 (105s)
+  ep 02/20 loss 0.2827 val_dice 0.8823 (79s)
+  ep 03/20 loss 0.2655 val_dice 0.8809 (83s)
+  ep 04/20 loss 0.2592 val_dice 0.8892 (84s)
+  ep 05/20 loss 0.2548 val_dice 0.8831 (85s)
+  ep 06/20 loss 0.2528 val_dice 0.8915 (84s)
+  ep 07/20 loss 0.2496 val_dice 0.8918 (84s)
+  ep 08/20 loss 0.2477 val_dice 0.8925 (88s)
+  ep 09/20 loss 0.2465 val_dice 0.8921 (84s)
+  ep 10/20 loss 0.2452 val_dice 0.8929 (84s)
+  ep 11/20 loss 0.2442 val_dice 0.8929 (84s)
+  ep 12/20 loss 0.2436 val_dice 0.8930 (83s)
+  ep 13/20 loss 0.2424 val_dice 0.8941 (84s)
+  ep 14/20 loss 0.2421 val_dice 0.8938 (84s)
+  ep 15/20 loss 0.2416 val_dice 0.8944 (88s)
+  ep 16/20 loss 0.2414 val_dice 0.8944 (83s)
+  ep 17/20 loss 0.2410 val_dice 0.8944 (85s)
+  ep 18/20 loss 0.2410 val_dice 0.8944 (84s)
+  ep 19/20 loss 0.2406 val_dice 0.8945 (84s)
+  ep 20/20 loss 0.2405 val_dice 0.8945 (86s)
+[segformer_P10] ok | best val dice 0.8945 (ep 20) | treino 28.4 min | lat 15.24 ms | mem treino 2376 MiB

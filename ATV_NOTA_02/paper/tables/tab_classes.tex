@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\caption{Per-class metrics on the test set for the configurations of Table~\ref{tab:main}: IoU of the structure class, IoU and Dice of the background class, and mIoU (mean IoU of the two classes). Mean $\pm$ half-width of the 95\% CI.}
+\label{tab:classes}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lllcccc@{}}
+\toprule
+Exp. & Architecture & Condition & IoU structure & IoU background & Dice background & mIoU \\
+\midrule
+E151 & U-Net & Architecture only & 0.947{\scriptsize$\pm$0.002} & 0.986{\scriptsize$\pm$0.001} & 0.992{\scriptsize$\pm$0.001} & 0.967{\scriptsize$\pm$0.001} \\
+E160 & U-Net & Pre + arch. & 0.949{\scriptsize$\pm$0.002} & 0.986{\scriptsize$\pm$0.001} & 0.992{\scriptsize$\pm$0.001} & 0.967{\scriptsize$\pm$0.001} \\
+E152 & U-Net & Arch. + post & 0.949{\scriptsize$\pm$0.002} & 0.952{\scriptsize$\pm$0.002} & 0.957{\scriptsize$\pm$0.002} & 0.950{\scriptsize$\pm$0.002} \\
+E006 & U-Net & Pre + arch. + post & 0.950{\scriptsize$\pm$0.002} & 0.952{\scriptsize$\pm$0.002} & 0.957{\scriptsize$\pm$0.002} & 0.951{\scriptsize$\pm$0.002} \\
+\midrule
+E167 & SegFormer & Architecture only & 0.837{\scriptsize$\pm$0.004} & 0.928{\scriptsize$\pm$0.002} & 0.961{\scriptsize$\pm$0.001} & 0.883{\scriptsize$\pm$0.003} \\
+E180 & SegFormer & Pre + arch. & 0.838{\scriptsize$\pm$0.004} & 0.929{\scriptsize$\pm$0.002} & 0.962{\scriptsize$\pm$0.001} & 0.883{\scriptsize$\pm$0.003} \\
+E168 & SegFormer & Arch. + post & 0.826{\scriptsize$\pm$0.005} & 0.872{\scriptsize$\pm$0.002} & 0.912{\scriptsize$\pm$0.002} & 0.849{\scriptsize$\pm$0.003} \\
+E086 & SegFormer & Pre + arch. + post & 0.826{\scriptsize$\pm$0.005} & 0.873{\scriptsize$\pm$0.002} & 0.912{\scriptsize$\pm$0.002} & 0.850{\scriptsize$\pm$0.003} \\
+\midrule
+E183 & Mask2Former & Architecture only & 0.649{\scriptsize$\pm$0.014} & 0.836{\scriptsize$\pm$0.007} & 0.908{\scriptsize$\pm$0.004} & 0.742{\scriptsize$\pm$0.008} \\
+E193 & Mask2Former & Pre + arch. & 0.659{\scriptsize$\pm$0.014} & 0.796{\scriptsize$\pm$0.006} & 0.866{\scriptsize$\pm$0.003} & 0.727{\scriptsize$\pm$0.008} \\
+E185 & Mask2Former & Arch. + post & 0.650{\scriptsize$\pm$0.014} & 0.839{\scriptsize$\pm$0.007} & 0.910{\scriptsize$\pm$0.004} & 0.744{\scriptsize$\pm$0.008} \\
+E122 & Mask2Former & Pre + arch. + post & 0.661{\scriptsize$\pm$0.014} & 0.800{\scriptsize$\pm$0.006} & 0.869{\scriptsize$\pm$0.003} & 0.730{\scriptsize$\pm$0.008} \\
+\midrule
+REF & Otsu on $A$ & -- & 0.826{\scriptsize$\pm$0.013} & 0.916{\scriptsize$\pm$0.005} & 0.951{\scriptsize$\pm$0.003} & 0.871{\scriptsize$\pm$0.008} \\
+\bottomrule
+\end{tabular}}
+\end{table}

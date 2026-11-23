@@ -1,0 +1,30 @@
+[mask2former_P10] treino: 20160 quadros | val (selecao do checkpoint): 2520 | bs=32 | epocas=20 (12600 iteracoes) | entrada 128x128 | amp=torch.bfloat16
+Some weights of Mask2FormerForUniversalSegmentation were not initialized from the model checkpoint at facebook/mask2former-swin-tiny-ade-semantic and are newly initialized because the shapes did not match:
+- class_predictor.bias: found shape torch.Size([151]) in the checkpoint and torch.Size([3]) in the model instantiated
+- class_predictor.weight: found shape torch.Size([151, 256]) in the checkpoint and torch.Size([3, 256]) in the model instantiated
+- criterion.empty_weight: found shape torch.Size([151]) in the checkpoint and torch.Size([3]) in the model instantiated
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/workspace/ATV_NOTA_02/scripts/03_train_predict.py:172: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
+  tl += float(loss)
+  ep 01/20 loss 4.1799 val_dice 0.7744 (354s)
+  ep 02/20 loss 3.3952 val_dice 0.7712 (351s)
+  ep 03/20 loss 3.3028 val_dice 0.7683 (351s)
+  ep 04/20 loss 3.2701 val_dice 0.7739 (351s)
+  ep 05/20 loss 3.2456 val_dice 0.7754 (350s)
+  ep 06/20 loss 3.2237 val_dice 0.7745 (350s)
+  ep 07/20 loss 3.2135 val_dice 0.7739 (351s)
+  ep 08/20 loss 3.2038 val_dice 0.7758 (351s)
+  ep 09/20 loss 3.1966 val_dice 0.7755 (352s)
+  ep 10/20 loss 3.1919 val_dice 0.7745 (351s)
+  ep 11/20 loss 3.1874 val_dice 0.7740 (351s)
+  ep 12/20 loss 3.1823 val_dice 0.7747 (352s)
+  ep 13/20 loss 3.1797 val_dice 0.7753 (352s)
+  ep 14/20 loss 3.1762 val_dice 0.7745 (352s)
+  ep 15/20 loss 3.1741 val_dice 0.7747 (352s)
+  ep 16/20 loss 3.1725 val_dice 0.7745 (352s)
+  ep 17/20 loss 3.1712 val_dice 0.7746 (352s)
+  ep 18/20 loss 3.1707 val_dice 0.7746 (352s)
+  ep 19/20 loss 3.1692 val_dice 0.7745 (352s)
+  ep 20/20 loss 3.1691 val_dice 0.7745 (341s)
+[mask2former_P10] ok | best val dice 0.7758 (ep 8) | treino 117.0 min | lat 54.71 ms | mem treino 4525 MiB
