@@ -69,8 +69,9 @@ python testar_camera.py
 O script mede o FPS real em várias combinações (sem salvar imagens) e imprime
 o comando `python espelho.py ...` recomendado. No Windows testa DirectShow e
 Media Foundation; no Linux, V4L2. Com pouca luz, a exposição automática da
-webcam aumenta e o FPS cai (medido no Linux: 15 FPS numa sala com luz fraca);
-acender a luz de frente para a pessoa resolve.
+webcam aumenta e o FPS pode cair; acender a luz de frente para a pessoa
+resolve. No Linux a fila da câmera usa 2 buffers: com 1 só, o V4L2 descarta
+um quadro a cada dois e a webcam fica presa em 15 FPS mesmo com luz boa.
 
 ## Gravar e analisar as métricas
 
