@@ -14,7 +14,10 @@ def _abrir(indice, backend, fourcc, largura, altura):
     cap = cv2.VideoCapture(indice, BACKENDS[backend])
     if not cap.isOpened():
         return None
-    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)    # fila curta = menos atraso
+    # Fila curta = menos atraso. No V4L2 (Linux) o minimo e 2: com 1 buffer o
+    # driver nao tem onde gravar o proximo quadro enquanto o programa le o atual
+    # e descarta um a cada dois (medido: 15 fps com 1 buffer, 30 fps com 2).
+    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1 if sys.platform == "win32" else 2)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, largura)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, altura)
     cap.set(cv2.CAP_PROP_FPS, 30)
