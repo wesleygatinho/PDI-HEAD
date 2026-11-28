@@ -70,6 +70,11 @@ CORES = {
     "sauvola": "#9467bd",
 }
 
+# Sufixo aplicado a todos os arquivos de saida. Vazio = rodada do video
+# sintetico; "_canyon" (por exemplo) = rodada de um video real, que assim nao
+# sobrescreve os resultados da rodada sintetica.
+TAG = ""
+
 FASES = [
     (0.0, 5.0, "1 - Iluminacao uniforme", "#e8f5e9"),
     (5.0, 10.0, "2 - Holofote movel", "#fff3e0"),
@@ -171,33 +176,97 @@ def _rotular(img: np.ndarray, texto: str, sub: str = "") -> np.ndarray:
     return saida
 
 
+def painel_histograma(frame: np.ndarray, limiares: dict,
+                      larg: int, alt: int) -> np.ndarray:
+    """
+    Desenha o histograma do quadro com os limiares marcados, em BGR.
+
+    Usado no lugar do painel de gabarito quando o video e real (sem gabarito).
+    Ver o histograma escorregar para a esquerda enquanto as linhas de limiar o
+    acompanham e' a forma mais direta de mostrar o que os metodos automaticos
+    estao fazendo.
+    """
+    img = np.full((alt, larg, 3), 18, np.uint8)
+    h = np.bincount(frame.ravel(), minlength=256).astype(np.float64)
+    if h.max() > 0:
+        h = h / h.max()
+
+    margem = 26
+    base = alt - margem
+    util = base - 14
+    for i in range(256):
+        x = int(margem + i * (larg - 2 * margem) / 255.0)
+        y = int(base - h[i] * util)
+        cv2.line(img, (x, base), (x, y), (150, 150, 150), 1)
+
+    marcas = [("otsu", (178, 111, 31)), ("multiotsu_t1", (14, 127, 255)),
+              ("multiotsu_t2", (43, 57, 192)), ("fixo", (127, 127, 127))]
+    for chave, cor in marcas:
+        v = limiares.get(chave, float("nan"))
+        if not np.isfinite(v):
+            continue
+        x = int(margem + v * (larg - 2 * margem) / 255.0)
+        cv2.line(img, (x, 12), (x, base), cor, 2)
+        cv2.putText(img, f"{v:.0f}", (max(2, x - 10), 10),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.34, cor, 1, cv2.LINE_AA)
+
+    cv2.line(img, (margem, base), (larg - margem, base), (90, 90, 90), 1)
+    for v in (0, 64, 128, 192, 255):
+        x = int(margem + v * (larg - 2 * margem) / 255.0)
+        cv2.putText(img, str(v), (x - 8, alt - 8), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.32, (140, 140, 140), 1, cv2.LINE_AA)
+    return img
+
+
 def montar_mosaico(frame, gt, mascaras, limiares, ious, k, fase,
-                   larg=400, alt=300) -> np.ndarray:
-    """Grade 2x4 com o original, o gabarito e os cinco metodos principais."""
+                   fps=None, larg=400, alt=300) -> np.ndarray:
+    """
+    Grade 2x4: o quadro original, um painel de contexto e os seis metodos.
+
+    O painel de contexto e o GABARITO quando o video e sintetico, e o
+    HISTOGRAMA ao vivo quando o video e real (porque ai nao existe gabarito).
+    """
     def prep(img, titulo, sub=""):
         return _rotular(cv2.resize(img, (larg, alt),
                                    interpolation=cv2.INTER_AREA), titulo, sub)
 
-    t_s = k / config.VIDEO_FPS
+    tem_gt = gt is not None
+
+    def leg(m: str) -> str:
+        """Subtitulo do painel: IoU se houver gabarito, senao a area segmentada."""
+        if tem_gt and np.isfinite(ious.get(m, float("nan"))):
+            return f"IoU={ious[m]:.3f}"
+        return f"area objeto={100*utils.fracao_primeiro_plano(mascaras[m]):.1f}%"
+
+    t_s = k / float(fps or config.VIDEO_FPS)
+    if tem_gt:
+        contexto = prep(gt, "GABARITO (cena ideal)", "referencia para IoU")
+    else:
+        contexto = _rotular(painel_histograma(frame, limiares, larg, alt),
+                            "HISTOGRAMA DO QUADRO",
+                            "as linhas sao os limiares escolhidos")
+
+    cabecalho = (f"ORIGINAL  t={t_s:5.2f}s  quadro {k}",
+                 f"fase {fase}" if tem_gt else "video real, sem gabarito")
+
     paineis = [
-        prep(frame, f"ORIGINAL  t={t_s:5.2f}s  quadro {k}", f"fase {fase}"),
-        prep(gt, "GABARITO (cena ideal)", "referencia para IoU"),
-        prep(mascaras["fixo"], "1. LIMIAR FIXO  T=127",
-             f"IoU={ious['fixo']:.3f}"),
+        prep(frame, *cabecalho),
+        contexto,
+        prep(mascaras["fixo"], "1. LIMIAR FIXO  T=127", leg("fixo")),
         prep(mascaras["otsu"], f"2. OTSU GLOBAL  T={limiares['otsu']:.0f}",
-             f"IoU={ious['otsu']:.3f}"),
+             leg("otsu")),
         prep(mascaras["multiotsu_t1"],
              f"3. MULTI-OTSU  so classe escura  t1={limiares['multiotsu_t1']:.0f}",
-             f"IoU={ious['multiotsu_t1']:.3f}"),
+             leg("multiotsu_t1")),
         prep(mascaras["multiotsu_t2"],
              f"4. MULTI-OTSU  escura+media  t2={limiares['multiotsu_t2']:.0f}",
-             f"IoU={ious['multiotsu_t2']:.3f}"),
+             leg("multiotsu_t2")),
         prep(mascaras["adaptativa"],
              f"5. ADAPTATIVA  b={config.BLOCO} C={config.CONSTANTE_C}",
-             f"IoU={ious['adaptativa']:.3f}"),
+             leg("adaptativa")),
         prep(mascaras["adaptativa_ajustada"],
              f"6. ADAPTATIVA AJUSTADA  b={config.BLOCO_AJUSTADO}",
-             f"IoU={ious['adaptativa_ajustada']:.3f}"),
+             leg("adaptativa_ajustada")),
     ]
     linha1 = np.hstack(paineis[:4])
     linha2 = np.hstack(paineis[4:])
@@ -231,10 +300,10 @@ def processar(caminho_video: str | None) -> dict:
 
     # --- Escritores de video ------------------------------------------------
     esc_mosaico = utils.abrir_escritor(
-        config.DIR_RES_VIDEO / "mosaico_comparativo.mp4", fps,
+        config.DIR_RES_VIDEO / f"mosaico_comparativo{TAG}.mp4", fps,
         (400 * 4, (300 + ALTURA_ROTULO) * 2), colorido=True)
     escritores = {
-        m: utils.abrir_escritor(config.DIR_RES_VIDEO / f"saida_{m}.mp4",
+        m: utils.abrir_escritor(config.DIR_RES_VIDEO / f"saida_{m}{TAG}.mp4",
                                 fps, (larg, alt))
         for m in ("otsu", "multiotsu_t2", "adaptativa", "adaptativa_ajustada")
     }
@@ -283,9 +352,9 @@ def processar(caminho_video: str | None) -> dict:
         registro.append(linha)
 
         # --- Saidas em video ------------------------------------------------
-        gt_vis = gt if gt is not None else np.zeros_like(frame)
-        esc_mosaico.write(montar_mosaico(frame, gt_vis, mascaras, limiares,
-                                         ious, k, nome_fase))
+        # gt = None faz o mosaico trocar o painel de gabarito pelo histograma
+        esc_mosaico.write(montar_mosaico(frame, gt, mascaras, limiares,
+                                         ious, k, nome_fase, fps=fps))
         for m, esc in escritores.items():
             esc.write(mascaras[m])
 
@@ -298,7 +367,7 @@ def processar(caminho_video: str | None) -> dict:
                         for m in METODOS]
             utils.painel(paineis,
                          f"Quadro {k} (t = {k / fps:.2f} s) - fase {nome_fase}",
-                         config.DIR_RES_FRAMES / f"quadro_{k:04d}.png",
+                         config.DIR_RES_FRAMES / f"quadro{TAG}_{k:04d}.png",
                          colunas=4)
 
         k += 1
@@ -341,7 +410,10 @@ def graficos(res: dict) -> None:
               "adaptativa", "adaptativa_ajustada"]:
         ax.plot(t, serie("limiar", m), color=CORES[m], lw=1.4, label=ROTULOS[m])
     ax.set_ylim(0, 260)
-    _faixas_de_fase(ax, t_max)
+    # As faixas coloridas identificam as 4 fases do video sintetico. Em um video
+    # proprio elas nao significam nada, entao nao sao desenhadas.
+    if res["sintetico"]:
+        _faixas_de_fase(ax, t_max)
     ax.set_xlabel("tempo (s)")
     ax.set_ylabel("limiar (nivel de cinza)")
     ax.set_title("Como cada metodo move o limiar ao longo do video\n"
@@ -349,7 +421,7 @@ def graficos(res: dict) -> None:
                  fontweight="bold")
     ax.legend(fontsize=8, loc="lower left", ncol=2)
     ax.grid(alpha=0.3)
-    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / "V1_limiar_no_tempo.png")
+    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / f"V1_limiar_no_tempo{TAG}.png")
 
     if not res["sintetico"]:
         return
@@ -366,7 +438,7 @@ def graficos(res: dict) -> None:
                  fontweight="bold")
     ax.legend(fontsize=8, loc="lower left", ncol=2)
     ax.grid(alpha=0.3)
-    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / "V2_iou_no_tempo.png")
+    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / f"V2_iou_no_tempo{TAG}.png")
 
     # ---- 3) Instabilidade temporal ----------------------------------------
     fig, ax = plt.subplots(figsize=(12, 5))
@@ -381,7 +453,7 @@ def graficos(res: dict) -> None:
     ax.legend(fontsize=8, ncol=2)
     ax.grid(alpha=0.3)
     utils.salvar_figura(fig,
-                        config.DIR_RES_GRAFICOS / "V3_instabilidade_no_tempo.png")
+                        config.DIR_RES_GRAFICOS / f"V3_instabilidade_no_tempo{TAG}.png")
 
     # ---- 4) Fracao de primeiro plano --------------------------------------
     fig, ax = plt.subplots(figsize=(12, 5))
@@ -399,7 +471,7 @@ def graficos(res: dict) -> None:
     ax.legend(fontsize=8, ncol=2)
     ax.grid(alpha=0.3)
     utils.salvar_figura(fig,
-                        config.DIR_RES_GRAFICOS / "V4_area_no_tempo.png")
+                        config.DIR_RES_GRAFICOS / f"V4_area_no_tempo{TAG}.png")
 
     # ---- 5) Resumo por fase (barras agrupadas) ----------------------------
     fases = [f[2] for f in FASES]
@@ -426,7 +498,7 @@ def graficos(res: dict) -> None:
         a.grid(axis="y", alpha=0.3)
     ax[0].legend(fontsize=7.5, loc="upper right")
     fig.tight_layout()
-    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / "V5_resumo_por_fase.png")
+    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / f"V5_resumo_por_fase{TAG}.png")
 
     # ---- 6) Custo computacional -------------------------------------------
     fig, ax = plt.subplots(figsize=(9, 4.5))
@@ -440,7 +512,7 @@ def graficos(res: dict) -> None:
     ax.set_title("Custo por quadro (640x480)", fontweight="bold")
     ax.grid(axis="x", alpha=0.3)
     fig.tight_layout()
-    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / "V6_custo_por_quadro.png")
+    utils.salvar_figura(fig, config.DIR_RES_GRAFICOS / f"V6_custo_por_quadro{TAG}.png")
 
 
 # ---------------------------------------------------------------------------
@@ -463,7 +535,7 @@ def tabelas(res: dict) -> None:
 
     # CSV completo, quadro a quadro
     chaves = list(reg[0].keys())
-    utils.escrever_csv(config.DIR_RES_METRICAS / "video_quadro_a_quadro.csv",
+    utils.escrever_csv(config.DIR_RES_METRICAS / f"video_quadro_a_quadro{TAG}.csv",
                        chaves, [[r[c] for c in chaves] for r in reg])
 
     if not res["sintetico"]:
@@ -491,16 +563,16 @@ def tabelas(res: dict) -> None:
                                  _media(iou[sel]), _media(serie("f1", m)[sel]),
                                  100 * _media(inst[sel]), _media(lim[sel])])
 
-    utils.escrever_csv(config.DIR_RES_METRICAS / "video_resumo_global.csv",
+    utils.escrever_csv(config.DIR_RES_METRICAS / f"video_resumo_global{TAG}.csv",
                        ["metodo", "iou_medio", "iou_desvio", "iou_minimo",
                         "f1_medio", "instabilidade_%", "tempo_ms",
                         "desvio_do_limiar"], resumo_global)
-    utils.escrever_csv(config.DIR_RES_METRICAS / "video_resumo_por_fase.csv",
+    utils.escrever_csv(config.DIR_RES_METRICAS / f"video_resumo_por_fase{TAG}.csv",
                        ["fase", "metodo", "iou_medio", "f1_medio",
                         "instabilidade_%", "limiar_medio"], resumo_fases)
 
     # Relatorio Markdown
-    cam = config.DIR_RES_METRICAS / "RESUMO_video.md"
+    cam = config.DIR_RES_METRICAS / f"RESUMO_video{TAG}.md"
     with open(cam, "w", encoding="utf-8") as f:
         f.write("# Experimento 2 - Resultados sobre o video de 20 s\n\n")
         f.write(f"Video sintetico: {config.VIDEO_LARGURA}x{config.VIDEO_ALTURA}, "
@@ -531,7 +603,13 @@ def main() -> None:
     ap.add_argument("--video", default=None,
                     help="caminho de um video proprio (opcional). "
                          "Sem este argumento usa o video sintetico de 20 s.")
+    ap.add_argument("--tag", default="",
+                    help="sufixo dos arquivos de saida, para nao sobrescrever "
+                         "outra rodada. Ex.: --tag _canyon")
     args = ap.parse_args()
+
+    global TAG
+    TAG = args.tag
 
     print("=" * 74)
     print("EXPERIMENTO 2 - VIDEO")

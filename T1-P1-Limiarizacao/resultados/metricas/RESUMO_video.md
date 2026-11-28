@@ -6,13 +6,13 @@ Video sintetico: 640x480, 30 fps, 20 s (600 quadros), com gabarito analitico.
 
 | Metodo | IoU medio | Desvio do IoU | IoU minimo | F1 medio | Instabilidade (%) | Tempo (ms) | Desvio do limiar |
 |---|---|---|---|---|---|---|---|
-| Limiar fixo T=127 | 0.5164 | 0.3001 | 0.1196 | 0.6243 | 1.6675 | 0.4233 | 0.0000 |
-| Otsu global (por quadro) | 0.7151 | 0.3412 | 0.1228 | 0.7725 | 1.4813 | 1.1191 | 27.3516 |
-| Multi-Otsu (so a classe escura, t1) | 0.6406 | 0.0855 | 0.5760 | 0.7779 | 0.6586 | 1.3852 | 31.6929 |
-| Multi-Otsu (escura + media, t2) | 0.6738 | 0.3781 | 0.1224 | 0.7305 | 5.4364 | 1.3852 | 34.9486 |
-| Adaptativa gaussiana (b=35, C=10) | 0.5128 | 0.1230 | 0.2092 | 0.6681 | 6.0037 | 4.9342 | 49.4023 |
-| Adaptativa AJUSTADA (b=151, C=10) | 0.8630 | 0.1952 | 0.3349 | 0.9117 | 4.3930 | 23.0569 | 49.4665 |
-| Sauvola (local, media + desvio) | 0.7318 | 0.0876 | 0.3890 | 0.8418 | 1.5848 | 3.9594 | nan |
+| Limiar fixo T=127 | 0.5164 | 0.3001 | 0.1196 | 0.6243 | 1.6675 | 0.3303 | 0.0000 |
+| Otsu global (por quadro) | 0.7151 | 0.3412 | 0.1228 | 0.7725 | 1.4813 | 0.8596 | 27.3516 |
+| Multi-Otsu (so a classe escura, t1) | 0.6406 | 0.0855 | 0.5760 | 0.7779 | 0.6586 | 1.1983 | 31.6929 |
+| Multi-Otsu (escura + media, t2) | 0.6738 | 0.3781 | 0.1224 | 0.7305 | 5.4364 | 1.1983 | 34.9486 |
+| Adaptativa gaussiana (b=35, C=10) | 0.5128 | 0.1230 | 0.2092 | 0.6681 | 6.0037 | 4.5890 | 49.4023 |
+| Adaptativa AJUSTADA (b=151, C=10) | 0.8630 | 0.1952 | 0.3349 | 0.9117 | 4.3930 | 22.9442 | 49.4665 |
+| Sauvola (local, media + desvio) | 0.7318 | 0.0876 | 0.3890 | 0.8418 | 1.5848 | 3.6603 | nan |
 
 ## 2. Desempenho por fase
 

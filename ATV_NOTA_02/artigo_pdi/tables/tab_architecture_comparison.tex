@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Architecture comparison (test IoU / Dice). Aggregation rule: first row, architecture alone (P0+Q0); second row, the pre- + post-processing pair selected on the validation split for each architecture.}
+\label{tab:architecture_comparison}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\columnwidth}{L{2.3cm} *{3}{>{\centering\arraybackslash}X}}
+\toprule
+\textbf{Dataset} & \textbf{U-Net} & \textbf{SegFormer} & \textbf{Mask2Former} \\
+\midrule
+\texttt{gray\_scott} (P0+Q0) & 0.947 / 0.953 & 0.837 / 0.892 & 0.649 / 0.768 \\
+\texttt{gray\_scott} (selected P+Q) & 0.950 / 0.962 & 0.826 / 0.893 & 0.661 / 0.784 \\
+\quad selected pair & P2+Q1 & P8+Q1 & P5+Q2 \\
+\bottomrule
+\end{tabularx}
+\end{table}

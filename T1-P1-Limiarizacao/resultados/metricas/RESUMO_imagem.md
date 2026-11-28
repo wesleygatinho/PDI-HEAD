@@ -6,9 +6,9 @@ Os limiares calculados pelo codigo escrito do zero sao comparados aos das biblio
 
 | Imagem | Otsu propria | Otsu skimage | Otsu OpenCV | Multi-Otsu propria | Multi-Otsu skimage | Concord. adapt. (%) | eta |
 |---|---|---|---|---|---|---|---|
+| 10_sudoku | 96 | 96 | 96 | [75, 117] | [75, 117] | 99.7559 | 0.6476 |
+| 11_ressonancia | 39 | 39 | 39 | [35, 109] | [35, 109] | 99.7178 | 0.8184 |
 | 01_camera | 102 | 102 | 102 | [87, 176] | [87, 176] | 99.4797 | 0.8572 |
-| 02_moedas | 107 | 107 | 107 | [77, 139] | [77, 139] | 99.2652 | 0.7564 |
-| 03_pagina | 157 | 157 | 157 | [114, 186] | [114, 186] | 99.8759 | 0.7189 |
 | 04_sintetica | 125 | 125 | 125 | [74, 148] | [74, 148] | 99.9046 | 0.5956 |
 
 ## 2. Metricas contra o gabarito (imagem 04_sintetica)
@@ -29,14 +29,14 @@ Imagem com iluminacao diagonal nao uniforme e ruido gaussiano (sigma = 3).
 
 | Metodo | Tempo (ms) | Chamadas/s |
 |---|---|---|
-| Otsu (implementacao propria) | 0.4585 | 2180.8110 |
-| Otsu (skimage) | 0.5113 | 1955.8372 |
-| Otsu (OpenCV) | 0.1454 | 6879.9449 |
-| Multi-Otsu 3 classes (propria) | 1.1388 | 878.0865 |
-| Multi-Otsu 3 classes (skimage) | 0.9344 | 1070.2398 |
-| Multi-Otsu 4 classes (skimage) | 29.1694 | 34.2825 |
-| Adaptativa media (propria, integral) | 1.7046 | 586.6324 |
-| Adaptativa gaussiana (propria) | 4.8077 | 208.0016 |
-| Adaptativa (OpenCV) | 1.1253 | 888.6361 |
-| Sauvola (propria) | 5.9453 | 168.2002 |
+| Otsu (implementacao propria) | 0.4720 | 2118.7563 |
+| Otsu (skimage) | 0.6009 | 1664.0873 |
+| Otsu (OpenCV) | 0.2403 | 4160.8588 |
+| Multi-Otsu 3 classes (propria) | 1.0472 | 954.8955 |
+| Multi-Otsu 3 classes (skimage) | 0.9901 | 1009.9735 |
+| Multi-Otsu 4 classes (skimage) | 29.1558 | 34.2985 |
+| Adaptativa media (propria, integral) | 1.5062 | 663.9313 |
+| Adaptativa gaussiana (propria) | 4.5493 | 219.8150 |
+| Adaptativa (OpenCV) | 1.0783 | 927.3943 |
+| Sauvola (propria) | 2.9664 | 337.1101 |
 

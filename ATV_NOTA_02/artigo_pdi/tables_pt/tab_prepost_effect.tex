@@ -1,0 +1,31 @@
+\begin{table*}[t]
+\centering
+\caption{Análise de ablação dos efeitos de pré e pós-processamento: variação pareada do IoU e do Dice no teste (pontos percentuais) de cada técnica em relação à mesma arquitetura sem pré e pós-processamento (P0+Q0), calculada nas mesmas 120 trajetórias de teste. $\Delta$Dice$_{n\geq50}$ repete a variação do Dice sem o instante inicial aleatório $n=0$. Em negrito: IC de 95\% por \textit{bootstrap} estratificado não contém zero. Valores abaixo de 0,005 ponto em módulo aparecem como $\pm$0,00.}
+\label{tab:prepost_effect}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{L{0.6cm} Y *{9}{c}}
+\toprule
+ & & \multicolumn{3}{c}{\textbf{U-Net}} & \multicolumn{3}{c}{\textbf{SegFormer}} & \multicolumn{3}{c}{\textbf{Mask2Former}} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(lr){9-11}
+\textbf{ID} & \textbf{Etapa / método} & $\Delta$IoU & $\Delta$Dice & $\Delta$Dice$_{n\geq50}$ & $\Delta$IoU & $\Delta$Dice & $\Delta$Dice$_{n\geq50}$ & $\Delta$IoU & $\Delta$Dice & $\Delta$Dice$_{n\geq50}$ \\
+\midrule
+P1 & Z-score (pré) & \textbf{$-$0,08} & \textbf{$-$0,11} & $-$0,02 & \textbf{+0,06} & \textbf{+0,03} & \textbf{+0,03} & \textbf{+0,17} & \textbf{+0,13} & \textbf{+0,12} \\
+P2 & RMS (pré) & \textbf{+0,10} & \textbf{+0,15} & \textbf{+0,01} & $\pm$0,00 & $\pm$0,00 & $\pm$0,00 & \textbf{+0,25} & \textbf{+0,17} & \textbf{+0,19} \\
+P3 & Robusta (pré) & \textbf{$-$0,03} & \textbf{$-$0,08} & \textbf{+0,01} & \textbf{+0,05} & \textbf{+0,03} & \textbf{+0,03} & \textbf{+0,07} & \textbf{+0,05} & \textbf{+0,06} \\
+P4 & Mín-máx (pré) & \textbf{+0,11} & \textbf{+0,17} & +0,01 & $-$0,01 & $\pm$0,00 & $\pm$0,00 & \textbf{+0,39} & +0,16 & \textbf{+0,68} \\
+P5 & Recorte por percentis (pré) & \textbf{$-$0,07} & \textbf{$-$0,10} & \textbf{$-$0,01} & $-$0,01 & $\pm$0,00 & $\pm$0,00 & \textbf{+0,95} & \textbf{+1,37} & \textbf{+0,18} \\
+P6 & Gaussiano (pré) & \textbf{$-$0,14} & \textbf{$-$0,09} & \textbf{$-$0,07} & \textbf{$-$0,07} & \textbf{$-$0,04} & \textbf{$-$0,04} & \textbf{+0,33} & \textbf{+0,55} & \textbf{+0,33} \\
+P7 & Mediana (pré) & \textbf{$-$1,03} & \textbf{$-$0,64} & \textbf{$-$0,58} & $-$0,01 & $-$0,01 & $-$0,01 & \textbf{+0,34} & \textbf{+0,25} & \textbf{+0,33} \\
+P8 & Bilateral (pré) & \textbf{$-$0,16} & \textbf{$-$0,15} & \textbf{$-$0,06} & \textbf{+0,09} & \textbf{+0,06} & \textbf{+0,06} & +0,01 & $\pm$0,00 & +0,01 \\
+P9 & Difusão anisotrópica (pré) & \textbf{$-$0,82} & \textbf{$-$0,49} & \textbf{$-$0,41} & $-$0,01 & $\pm$0,00 & $\pm$0,00 & \textbf{+0,20} & \textbf{+0,15} & \textbf{+0,17} \\
+P10 & \textit{Wavelet} (pré) & \textbf{$-$0,08} & +0,03 & \textbf{$-$0,07} & \textbf{+0,01} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{+0,10} & \textbf{+0,07} & \textbf{+0,08} \\
+\midrule
+Q1 & Otimização do limiar (pós) & \textbf{+0,14} & \textbf{+0,84} & \textbf{$-$0,28} & \textbf{$-$1,18} & +0,07 & \textbf{$-$1,21} & +0,03 & $-$0,01 & $-$0,01 \\
+Q2 & Abertura (pós) & \textbf{$-$2,42} & \textbf{$-$1,28} & \textbf{$-$1,31} & \textbf{$-$0,46} & \textbf{$-$0,25} & \textbf{$-$0,26} & \textbf{+0,04} & \textbf{+0,05} & \textbf{+0,05} \\
+Q3 & Fechamento (pós) & \textbf{$-$0,38} & \textbf{$-$0,18} & \textbf{$-$0,21} & \textbf{+0,18} & \textbf{+0,10} & \textbf{+0,11} & $\pm$0,00 & \textbf{$-$0,03} & \textbf{$-$0,03} \\
+Q4 & Filtro de componentes (pós) & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} & \textbf{$\pm$0,00} \\
+Q5 & Filtro temporal (pós) & \textbf{$-$15,23} & \textbf{$-$11,29} & \textbf{$-$11,85} & \textbf{$-$13,50} & \textbf{$-$10,58} & \textbf{$-$11,11} & \textbf{$-$9,42} & \textbf{$-$8,63} & \textbf{$-$9,06} \\
+\bottomrule
+\end{tabularx}
+\end{table*}

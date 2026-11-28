@@ -118,3 +118,14 @@ Estrutura: Introdução (objetivo, PP1–PP4, contribuição e limites) → Fund
 relacionados (Gray–Scott, aplicações, The Well, arquiteturas, pré/pós-processamento, métricas) → Materiais e
 métodos (pipeline gráfico) → Resultados (tabelas visuais, uma subseção por PP, sensibilidade a n = 0) →
 Discussão → Limitações → Conclusão → Apêndices (tabela sequencial E001–E198 e demais tabelas visuais).
+
+## Artigo no template da disciplina — `artigo_pdi/`
+
+Versão principal do artigo no template `template_pdi_com_tabelas_segmentacao.tex` (Elsevier, Results in
+Engineering, duas colunas), com cerca de 14 páginas, em inglês (`main.tex`) e em português (`main_pt.tex`).
+As tabelas das duas versões saem dos mesmos CSVs (`tables/` e `tables_pt/`), e o texto não usa travessão (`--`).
+
+```bash
+.venv/Scripts/python scripts/08_artigo_pdi.py       # tabelas EN e PT + cópia das figuras
+cd artigo_pdi && latexmk -pdf main.tex && latexmk -pdf main_pt.tex
+```

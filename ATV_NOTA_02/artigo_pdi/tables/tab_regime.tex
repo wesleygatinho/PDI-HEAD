@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Test Dice per pattern regime (20 test trajectories each) for each architecture alone, for its validation-selected pre- + post-processing pair and for the learning-free reference.}
+\label{tab:regime}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabularx}{\columnwidth}{Y *{6}{c}}
+\toprule
+\textbf{Configuration} & \textbf{Glid.} & \textbf{Bubb.} & \textbf{Maze} & \textbf{Worms} & \textbf{Spir.} & \textbf{Spots} \\
+\midrule
+U-Net (P0+Q0) & 0.948 & 0.979 & 0.950 & 0.948 & 0.943 & 0.949 \\
+U-Net (P2+Q1) & 0.963 & 0.981 & 0.959 & 0.956 & 0.955 & 0.958 \\
+SegFormer (P0+Q0) & 0.927 & 0.952 & 0.865 & 0.868 & 0.905 & 0.833 \\
+SegFormer (P8+Q1) & 0.941 & 0.952 & 0.859 & 0.866 & 0.912 & 0.829 \\
+Mask2Former (P0+Q0) & 0.833 & 0.800 & 0.781 & 0.712 & 0.816 & 0.667 \\
+Mask2Former (P5+Q2) & 0.850 & 0.803 & 0.795 & 0.726 & 0.835 & 0.692 \\
+Otsu on $A$ (P0+Q0) & 0.852 & 0.917 & 0.938 & 0.896 & 0.821 & 0.906 \\
+\bottomrule
+\end{tabularx}
+\end{table}

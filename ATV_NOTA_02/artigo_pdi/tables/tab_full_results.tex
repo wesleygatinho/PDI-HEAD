@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering
+\caption{Experimental results on the test set (120 trajectories, 2,520 frames) for the four conditions of each architecture and for the learning-free reference: architecture alone (P0+Q0), best pre-processing, best post-processing and best pair, each selected on the validation split by mean Dice. Mean over test trajectories $\pm$ half-width of the 95\% stratified bootstrap CI. Latency: network + post-processing per $128\times128$ frame, batch 1, NVIDIA RTX A5000. Best value per column in bold. The 198 combinations are in the supplementary file \texttt{results\_sequential.csv}.}
+\label{tab:full_results}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{L{2.05cm} L{0.6cm} L{2.3cm} Y c c c c c}
+\toprule
+\textbf{Dataset} & \textbf{ID} & \textbf{Pre-processing} & \textbf{Architecture / post-processing} & \textbf{IoU} & \textbf{Dice} & \textbf{Prec.} & \textbf{Rec.} & \textbf{Latency (ms)} \\
+\midrule
+\multirow{13}{2.05cm}{\texttt{gray\_scott\_}\newline\texttt{reaction\_}\newline\texttt{diffusion}} & E151 & P0 Baseline & U-Net / Q0 Baseline & 0.947{\scriptsize$\pm$0.002} & 0.953{\scriptsize$\pm$0.002} & 0.956{\scriptsize$\pm$0.002} & 0.954{\scriptsize$\pm$0.002} & 5.62 \\
+ & E160 & P4 Min-max & U-Net / Q0 Baseline & 0.949{\scriptsize$\pm$0.002} & 0.955{\scriptsize$\pm$0.002} & \textbf{0.958{\scriptsize$\pm$0.002}} & 0.954{\scriptsize$\pm$0.002} & 5.77 \\
+ & E152 & P0 Baseline & U-Net / Q1 Threshold optim. & 0.949{\scriptsize$\pm$0.002} & 0.961{\scriptsize$\pm$0.002} & 0.950{\scriptsize$\pm$0.002} & 0.996{\scriptsize$\pm$0.001} & 5.63 \\
+ & E006 & P2 RMS & U-Net / Q1 Threshold optim. & \textbf{0.950{\scriptsize$\pm$0.002}} & \textbf{0.962{\scriptsize$\pm$0.002}} & 0.951{\scriptsize$\pm$0.002} & \textbf{0.997{\scriptsize$\pm$0.000}} & 5.70 \\
+\addlinespace
+ & E167 & P0 Baseline & SegFormer / Q0 Baseline & 0.837{\scriptsize$\pm$0.004} & 0.892{\scriptsize$\pm$0.003} & 0.890{\scriptsize$\pm$0.003} & 0.894{\scriptsize$\pm$0.003} & 15.64 \\
+ & E180 & P8 Bilateral & SegFormer / Q0 Baseline & 0.838{\scriptsize$\pm$0.004} & 0.892{\scriptsize$\pm$0.003} & 0.890{\scriptsize$\pm$0.003} & 0.895{\scriptsize$\pm$0.003} & 16.14 \\
+ & E168 & P0 Baseline & SegFormer / Q1 Threshold optim. & 0.826{\scriptsize$\pm$0.005} & 0.893{\scriptsize$\pm$0.003} & 0.844{\scriptsize$\pm$0.004} & 0.973{\scriptsize$\pm$0.001} & 15.66 \\
+ & E086 & P8 Bilateral & SegFormer / Q1 Threshold optim. & 0.826{\scriptsize$\pm$0.005} & 0.893{\scriptsize$\pm$0.003} & 0.845{\scriptsize$\pm$0.004} & 0.973{\scriptsize$\pm$0.001} & 16.16 \\
+\addlinespace
+ & E183 & P0 Baseline & Mask2Former / Q0 Baseline & 0.649{\scriptsize$\pm$0.014} & 0.768{\scriptsize$\pm$0.009} & 0.748{\scriptsize$\pm$0.009} & 0.792{\scriptsize$\pm$0.009} & 38.66 \\
+ & E193 & P5 Percentile clip. & Mask2Former / Q0 Baseline & 0.659{\scriptsize$\pm$0.014} & 0.782{\scriptsize$\pm$0.009} & 0.739{\scriptsize$\pm$0.010} & 0.857{\scriptsize$\pm$0.007} & 43.46 \\
+ & E185 & P0 Baseline & Mask2Former / Q2 Opening & 0.650{\scriptsize$\pm$0.014} & 0.769{\scriptsize$\pm$0.009} & 0.758{\scriptsize$\pm$0.009} & 0.782{\scriptsize$\pm$0.009} & 39.05 \\
+ & E122 & P5 Percentile clip. & Mask2Former / Q2 Opening & 0.661{\scriptsize$\pm$0.014} & 0.784{\scriptsize$\pm$0.009} & 0.749{\scriptsize$\pm$0.010} & 0.848{\scriptsize$\pm$0.008} & 43.85 \\
+\addlinespace
+ & REF & P0 Baseline & Otsu on $A$ / Q0 Baseline & 0.826{\scriptsize$\pm$0.013} & 0.888{\scriptsize$\pm$0.008} & 0.833{\scriptsize$\pm$0.013} & 0.967{\scriptsize$\pm$0.002} & 0.30 \\
+\bottomrule
+\end{tabularx}
+\end{table*}

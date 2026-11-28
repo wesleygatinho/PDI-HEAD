@@ -1,11 +1,11 @@
 ﻿metodo;tempo_ms;chamadas_por_segundo
-Otsu (implementacao propria);0,458545;2180,811020
-Otsu (skimage);0,511290;1955,837222
-Otsu (OpenCV);0,145350;6879,944922
-Multi-Otsu 3 classes (propria);1,138840;878,086475
-Multi-Otsu 3 classes (skimage);0,934370;1070,239839
-Multi-Otsu 4 classes (skimage);29,169390;34,282513
-Adaptativa media (propria, integral);1,704645;586,632405
-Adaptativa gaussiana (propria);4,807655;208,001614
-Adaptativa (OpenCV);1,125320;888,636121
-Sauvola (propria);5,945295;168,200232
+Otsu (implementacao propria);0,471975;2118,756291
+Otsu (skimage);0,600930;1664,087332
+Otsu (OpenCV);0,240335;4160,858799
+Multi-Otsu 3 classes (propria);1,047235;954,895511
+Multi-Otsu 3 classes (skimage);0,990125;1009,973488
+Multi-Otsu 4 classes (skimage);29,155815;34,298475
+Adaptativa media (propria, integral);1,506180;663,931270
+Adaptativa gaussiana (propria);4,549280;219,815004
+Adaptativa (OpenCV);1,078290;927,394300
+Sauvola (propria);2,966390;337,110090

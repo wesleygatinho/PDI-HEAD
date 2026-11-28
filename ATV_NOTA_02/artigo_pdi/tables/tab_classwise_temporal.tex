@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering
+\caption{Class-wise and temporal metrics on the test set for the configurations of Table~\ref{tab:full_results}. IoU$_{bg}$, Dice$_{bg}$: background class; mIoU: mean IoU of the two classes; AVE: area-variation error (\% of the domain per sampled step); CDE: structure-centroid displacement error (pixels, periodic distance); TC: temporal consistency of the masks; TCE $=|\mathrm{TC}_{pred}-\mathrm{TC}_{GT}|$; memory: peak GPU memory at inference (batch 1). Mean $\pm$ half-width of the 95\% CI.}
+\label{tab:classwise_temporal}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{L{0.7cm} L{1.6cm} Y c c c c c c c c}
+\toprule
+\textbf{ID} & \textbf{Architecture} & \textbf{Condition} & \textbf{IoU$_{bg}$} & \textbf{Dice$_{bg}$} & \textbf{mIoU} & \textbf{AVE (\%)} & \textbf{CDE (px)} & \textbf{TC} & \textbf{TCE} & \textbf{Mem. (MiB)} \\
+\midrule
+E151 & U-Net & Architecture only (P0+Q0) & 0.986{\scriptsize$\pm$0.001} & 0.992{\scriptsize$\pm$0.001} & 0.967{\scriptsize$\pm$0.001} & 0.76{\scriptsize$\pm$0.05} & 2.68{\scriptsize$\pm$0.34} & 0.686 & 0.010{\scriptsize$\pm$0.002} & 170 \\
+E160 & U-Net & Pre + arch. (P4+Q0) & 0.986{\scriptsize$\pm$0.001} & 0.992{\scriptsize$\pm$0.001} & 0.967{\scriptsize$\pm$0.001} & 0.59{\scriptsize$\pm$0.07} & 2.16{\scriptsize$\pm$0.34} & 0.683 & 0.007{\scriptsize$\pm$0.001} & 170 \\
+E152 & U-Net & Arch. + post (P0+Q1) & 0.952{\scriptsize$\pm$0.002} & 0.957{\scriptsize$\pm$0.002} & 0.950{\scriptsize$\pm$0.002} & 3.55{\scriptsize$\pm$0.14} & 1.57{\scriptsize$\pm$0.22} & 0.691 & 0.009{\scriptsize$\pm$0.001} & 170 \\
+E006 & U-Net & Pre + arch. + post (P2+Q1) & 0.952{\scriptsize$\pm$0.002} & 0.957{\scriptsize$\pm$0.002} & 0.951{\scriptsize$\pm$0.002} & 3.58{\scriptsize$\pm$0.15} & 1.42{\scriptsize$\pm$0.21} & 0.691 & 0.008{\scriptsize$\pm$0.001} & 170 \\
+\addlinespace
+E167 & SegFormer & Architecture only (P0+Q0) & 0.928{\scriptsize$\pm$0.002} & 0.961{\scriptsize$\pm$0.001} & 0.883{\scriptsize$\pm$0.003} & 0.89{\scriptsize$\pm$0.05} & 7.16{\scriptsize$\pm$0.69} & 0.685 & 0.013{\scriptsize$\pm$0.002} & 227 \\
+E180 & SegFormer & Pre + arch. (P8+Q0) & 0.929{\scriptsize$\pm$0.002} & 0.962{\scriptsize$\pm$0.001} & 0.883{\scriptsize$\pm$0.003} & 0.89{\scriptsize$\pm$0.05} & 7.18{\scriptsize$\pm$0.67} & 0.685 & 0.013{\scriptsize$\pm$0.002} & 227 \\
+E168 & SegFormer & Arch. + post (P0+Q1) & 0.872{\scriptsize$\pm$0.002} & 0.912{\scriptsize$\pm$0.002} & 0.849{\scriptsize$\pm$0.003} & 3.87{\scriptsize$\pm$0.15} & 7.85{\scriptsize$\pm$0.62} & 0.698 & 0.014{\scriptsize$\pm$0.001} & 227 \\
+E086 & SegFormer & Pre + arch. + post (P8+Q1) & 0.873{\scriptsize$\pm$0.002} & 0.912{\scriptsize$\pm$0.002} & 0.850{\scriptsize$\pm$0.003} & 3.87{\scriptsize$\pm$0.15} & 7.91{\scriptsize$\pm$0.60} & 0.697 & 0.014{\scriptsize$\pm$0.001} & 227 \\
+\addlinespace
+E183 & Mask2Former & Architecture only (P0+Q0) & 0.836{\scriptsize$\pm$0.007} & 0.908{\scriptsize$\pm$0.004} & 0.742{\scriptsize$\pm$0.008} & 1.20{\scriptsize$\pm$0.05} & 9.47{\scriptsize$\pm$0.64} & 0.686 & 0.014{\scriptsize$\pm$0.002} & 287 \\
+E193 & Mask2Former & Pre + arch. (P5+Q0) & 0.796{\scriptsize$\pm$0.006} & 0.866{\scriptsize$\pm$0.003} & 0.727{\scriptsize$\pm$0.008} & 4.08{\scriptsize$\pm$0.14} & 7.13{\scriptsize$\pm$0.65} & 0.697 & 0.012{\scriptsize$\pm$0.001} & 287 \\
+E185 & Mask2Former & Arch. + post (P0+Q2) & 0.839{\scriptsize$\pm$0.007} & 0.910{\scriptsize$\pm$0.004} & 0.744{\scriptsize$\pm$0.008} & 1.20{\scriptsize$\pm$0.05} & 9.95{\scriptsize$\pm$0.76} & 0.684 & 0.015{\scriptsize$\pm$0.002} & 287 \\
+E122 & Mask2Former & Pre + arch. + post (P5+Q2) & 0.800{\scriptsize$\pm$0.006} & 0.869{\scriptsize$\pm$0.003} & 0.730{\scriptsize$\pm$0.008} & 4.10{\scriptsize$\pm$0.14} & 7.45{\scriptsize$\pm$0.81} & 0.695 & 0.010{\scriptsize$\pm$0.001} & 287 \\
+\addlinespace
+REF & Otsu on $A$ & Reference (P0+Q0) & 0.916{\scriptsize$\pm$0.005} & 0.951{\scriptsize$\pm$0.003} & 0.871{\scriptsize$\pm$0.008} & 1.76{\scriptsize$\pm$0.13} & 3.17{\scriptsize$\pm$0.43} & 0.710 & 0.027{\scriptsize$\pm$0.003} & n/a \\
+\bottomrule
+\end{tabularx}
+\end{table*}

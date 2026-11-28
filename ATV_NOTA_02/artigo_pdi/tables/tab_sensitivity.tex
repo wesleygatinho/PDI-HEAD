@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\caption{Sensitivity to the initial snapshot: mean test Dice over all 21 snapshots, at the random initial snapshot $n=0$ only and over the 20 snapshots $n\geq50$.}
+\label{tab:sensitivity}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\columnwidth}{L{0.7cm} Y c c c}
+\toprule
+\textbf{ID} & \textbf{Configuration} & \textbf{All} & \textbf{$n=0$} & \textbf{$n\geq50$} \\
+\midrule
+E151 & U-Net (P0+Q0) & 0.953 & 0.120 & 0.995 \\
+E160 & U-Net (P4+Q0) & 0.955 & 0.153 & 0.995 \\
+E152 & U-Net (P0+Q1) & 0.961 & 0.353 & 0.992 \\
+E006 & U-Net (P2+Q1) & 0.962 & 0.354 & 0.992 \\
+\addlinespace
+E167 & SegFormer (P0+Q0) & 0.892 & 0.100 & 0.931 \\
+E180 & SegFormer (P8+Q0) & 0.892 & 0.100 & 0.932 \\
+E168 & SegFormer (P0+Q1) & 0.893 & 0.357 & 0.919 \\
+E086 & SegFormer (P8+Q1) & 0.893 & 0.357 & 0.920 \\
+\addlinespace
+E183 & Mask2Former (P0+Q0) & 0.768 & 0.102 & 0.801 \\
+E193 & Mask2Former (P5+Q0) & 0.782 & 0.353 & 0.803 \\
+E185 & Mask2Former (P0+Q2) & 0.769 & 0.101 & 0.802 \\
+E122 & Mask2Former (P5+Q2) & 0.784 & 0.353 & 0.805 \\
+\addlinespace
+REF & Otsu on $A$ (P0+Q0) & 0.888 & 0.241 & 0.921 \\
+\bottomrule
+\end{tabularx}
+\end{table}

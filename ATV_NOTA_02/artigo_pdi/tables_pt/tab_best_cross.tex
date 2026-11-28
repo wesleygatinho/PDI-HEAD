@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{Melhor configuração escolhida na validação e desempenho no teste. Critério de seleção fixado antes do teste: maior Dice médio de validação entre as 198 combinações.}
+\label{tab:best_configuration}
+\small
+\begin{tabularx}{\textwidth}{L{4.3cm} L{1.6cm} L{2.4cm} L{2.8cm} c c c}
+\toprule
+\textbf{Conjunto} & \textbf{Arquitetura} & \textbf{Pré-processamento} & \textbf{Pós-processamento} & \textbf{IoU} & \textbf{Dice} & \textbf{IC 95\% (Dice)} \\
+\midrule
+\texttt{gray\_scott\_reaction\_}\newline\texttt{diffusion} & U-Net & P2 RMS & Q1 Otimização do limiar & 0,950 & 0,962 & [0,960; 0,964] \\
+\bottomrule
+\end{tabularx}
+\vspace{6pt}
+\caption{Resumo entre conjuntos da abordagem de segmentação escolhida. Ganho relativo: Dice no teste da configuração escolhida em relação à mesma arquitetura sem pré e pós-processamento.}
+\label{tab:cross_dataset}
+\small
+\begin{tabularx}{\textwidth}{L{4.3cm} L{1.7cm} L{1.4cm} c c Y}
+\toprule
+\textbf{Conjunto} & \textbf{Arquitetura escolhida} & \textbf{P / Q escolhidos} & \textbf{Dice no teste} & \textbf{Ganho relativo (\%)} & \textbf{Observações de generalização} \\
+\midrule
+\texttt{gray\_scott\_reaction\_}\newline\texttt{diffusion} & U-Net & P2 / Q1 & 0,962 & +0,95 & O ganho sobre a U-Net sozinha (0,953) vem do instante inicial aleatório; em $n\geq50$, Dice de 0,992 contra 0,995 ($-$0,2\%). \\
+\bottomrule
+\end{tabularx}
+\end{table*}

@@ -1,0 +1,916 @@
+%% ============================================================================
+%% Template LaTeX baseado no artigo publicado em:
+%% Elsevier - Results in Engineering (Review Article, 2 colunas)
+%% Classe: elsarticle
+%% Compilacao recomendada: pdflatex / xelatex / tectonic
+%% ============================================================================
+%% DICA DE FORMATO:
+%% - Para visual identico ao PDF publicado (duas colunas):
+\documentclass[final,5p,times,twocolumn]{elsarticle}
+%% - Para submissao em formato preprint (uma coluna, 12pt), comente a linha
+%%   acima e descomente a linha abaixo:
+%% \documentclass[preprint,12pt]{elsarticle}
+
+%% --- Pacotes essenciais ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{lineno}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+%% --- Configuracao de citacoes numericas (padrao do artigo: [1], [6-22]) ---
+\biboptions{sort&compress}
+
+%% --- Configuracao da revista ---
+\journal{Results in Engineering}
+
+%% --- Ajuste opcional de numeracao de linhas (util no modo preprint) ---
+\modulolinenumbers[5]
+
+%% --- Configuracao de colunas flexiveis em tabelas ---
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+%% ============================================================================
+%% CABECALHO (FRONTMATTER)
+%% ============================================================================
+\begin{frontmatter}
+
+%% Tipo de artigo (opcional como nota de titulo, como "Review article")
+\title{[Article Title: A Comprehensive Review of Techniques and Innovations]}
+
+%% --- Autores e correspondencia (padrao a, b, c... igual ao artigo) ---
+\author[a,b]{[First Author]\corref{cor1}}
+\ead{first.author@institution.edu}
+
+\author[c]{[Second Author]\corref{cor1}}
+\ead{second.author@institution.edu}
+
+\author[a]{[Third Author]}
+
+\author[d]{[Fourth Author]}
+
+\author[e]{[Fifth Author]\corref{cor1}}
+\ead{fifth.author@institution.edu}
+
+\author[f]{[Sixth Author]}
+
+\cortext[cor1]{Corresponding authors.}
+
+%% --- Afiliacoes ---
+\affiliation[a]{%
+    organization={[School/Department Name, Faculty Name, University Name]},
+    city={[City]},
+    postcode={[Postcode]},
+    country={[Country]}
+}
+
+\affiliation[b]{%
+    organization={[Department Name, Faculty Name, University Name]},
+    city={[City]},
+    country={[Country]}
+}
+
+\affiliation[c]{%
+    organization={[Department Name, University Name]},
+    postcode={[Postcode]},
+    country={[Country]}
+}
+
+\affiliation[d]{%
+    organization={[School/Department Name, University Name]},
+    postcode={[Postcode]},
+    country={[Country]}
+}
+
+\affiliation[e]{%
+    organization={[School/Department Name, University Name]},
+    city={[City]},
+    postcode={[Postcode]},
+    country={[Country]}
+}
+
+\affiliation[f]{%
+    organization={[School/Department Name, University Name]},
+    postcode={[Postcode]},
+    country={[Country]}
+}
+
+%% --- Abstract ---
+\begin{abstract}
+[Single-paragraph abstract of approximately 200--250 words. Summarize the scope of the review, the systematic taxonomy established to evaluate the methodologies, the main comparative findings and trade-offs, recent mathematical or methodological advancements, emerging research directions, unresolved challenges, and concluding trajectories for future research.]
+\end{abstract}
+
+%% --- Keywords ---
+\begin{keyword}
+[Keyword 1] \sep
+[Keyword 2] \sep
+[Keyword 3] \sep
+[Keyword 4] \sep
+[Keyword 5]
+\end{keyword}
+
+\end{frontmatter}
+
+%% Descomente a linha abaixo se desejar numeracao de linhas na revisao:
+%% \linenumbers
+
+%% ============================================================================
+%% SUMARIO (CONTENTS) — Caracteristico de artigos de revisao na revista
+%% ============================================================================
+\setcounter{tocdepth}{2} % Mostra secoes e subsecoes (1, 2, 2.1, 2.2...)
+\tableofcontents
+\vspace{1em}
+
+%% ============================================================================
+%% SECAO 1: INTRODUCTION
+%% ============================================================================
+\section{Introduction}\label{sec:intro}
+
+[Opening paragraph introducing the engineering problem, real-world relevance, and motivation, with numeric citations \cite{ref1,ref2}. Refer to a full-width introductory figure as shown in Fig.~\ref{fig:overview}.]
+
+[Second paragraph explaining why direct measurement or conventional solutions are impractical, and defining the fundamental problem categories (e.g., forward problem vs.\ inverse problem), shown schematically in Fig.~\ref{fig:schematic}.]
+
+[Third paragraph categorizing the main classes of approaches in the literature \cite{ref1,ref2,ref3}, contrasting their main strengths and drawbacks, see Fig.~\ref{fig:comparison}.]
+
+[Fourth paragraph summarizing secondary approaches and referencing a comparative summary table, see Table~\ref{tab:summary_methods}.]
+
+%% Exemplo de figura em largura total (duas colunas) — equivalente a Fig. 1
+\begin{figure*}[t]
+    \centering
+    %% Substitua o \fbox abaixo por: \includegraphics[width=0.9\textwidth]{fig1.pdf}
+    \fbox{\parbox[c][4.5cm][c]{0.88\textwidth}{\centering [Figure 1: Full-width illustrative figure spanning both columns]}}
+    \caption{[Descriptive caption for Fig.~1, explaining the main components or risk zones highlighted \cite{ref3}.]}
+    \label{fig:overview}
+\end{figure*}
+
+%% Exemplo de tabela em largura total (duas colunas) — equivalente a Table 1
+\begin{table*}[t]
+    \centering
+    \caption{[Illustrative summary of the main approaches reviewed in Section~\ref{sec:intro}.]}
+    \label{tab:summary_methods}
+    \small
+    \begin{tabularx}{\textwidth}{L{2.8cm} Y Y Y}
+        \toprule
+        \textbf{[Approach Category]} & \textbf{[Example]} & \textbf{[Shortcoming]} & \textbf{[Solution]} \\
+        \midrule
+        \textit{Category 1} &
+        (i) [Method A], \newline (ii) [Method B], \newline (iii) [Method C] &
+        (i) [Limitation 1], \newline (ii) [Limitation 2], \newline (iii) [Limitation 3] &
+        [Proposed solution using, e.g., (i) Technique A, (ii) Technique B] \\
+        \addlinespace
+        \textit{Category 2} &
+        [Method D] &
+        [Limitation of Method D in complex or anisotropic scenarios] &
+        [Reformulate as a nonlinear problem and solve via optimization] \\
+        \addlinespace
+        \textit{Category 3} &
+        (i) [Database approach], \newline (ii) [Neural Networks] &
+        [Need large training dataset] &
+        [Artificially generate or augment dataset] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+%% Exemplo de figura em coluna unica — equivalente a Fig. 2
+\begin{figure}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=\columnwidth]{fig2.pdf}
+    \fbox{\parbox[c][3.2cm][c]{0.92\columnwidth}{\centering [Figure 2: Single-column schematic diagram]}}
+    \caption{[Caption for single-column schematic diagram (e.g., Forward vs.\ inverse problem).]}
+    \label{fig:schematic}
+\end{figure}
+
+%% Exemplo de figura em coluna unica — equivalente a Fig. 3
+\begin{figure}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=\columnwidth]{fig3.pdf}
+    \fbox{\parbox[c][3.8cm][c]{0.92\columnwidth}{\centering [Figure 3: Classification and comparison diagram]}}
+    \caption{[Classification and comparison of different algorithms reviewed in the paper.]}
+    \label{fig:comparison}
+\end{figure}
+
+[Paragraph defining the theoretical background (e.g., well-posedness vs.\ ill-posedness conditions) and the main contributions of this review paper.]
+
+The paper is organized as follows. Section~\ref{sec:sec2} presents [topic of Section 2]. Next, [topic of Section 3] is presented in Section~\ref{sec:sec3}. A review of [topic of Section 4] is presented in Section~\ref{sec:sec4}. Section~\ref{sec:sec5} introduces [topic of Section 5]. Section~\ref{sec:sec6} discusses [topic of Section 6]. Finally, concluding remarks are provided in Section~\ref{sec:conclusions}.
+
+%% ============================================================================
+%% SECAO 2: MODEL-BASED APPROACH (PART I)
+%% ============================================================================
+\section{[Model-based approach I: Reconstruction]}\label{sec:sec2}
+
+[Overview of the first major family of model-based techniques, introducing the main sub-approaches and referencing Fig.~\ref{fig:sec2_pros}.]
+
+\begin{figure*}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=0.85\textwidth]{fig4.pdf}
+    \fbox{\parbox[c][3.2cm][c]{0.85\textwidth}{\centering [Figure 4: Taxonomy / pros of each model-based approach]}}
+    \caption{[The pros of each model-based approach for the target problem.]}
+    \label{fig:sec2_pros}
+\end{figure*}
+
+\subsection{[Primary technique: Deconvolution]}\label{subsec:sec2_1}
+
+[Introduction to the first sub-approach, its main limitations, and its subdivision into three domains, see Fig.~\ref{fig:sec2_class}.]
+
+\begin{figure}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=0.75\columnwidth]{fig5.pdf}
+    \fbox{\parbox[c][3.5cm][c]{0.75\columnwidth}{\centering [Figure 5: Classification of sub-approaches]}}
+    \caption{[Classification of approaches within Section~\ref{subsec:sec2_1}.]}
+    \label{fig:sec2_class}
+\end{figure}
+
+\subsubsection{[Domain A: Time domain formulation]}\label{subsubsec:sec2_1_1}
+
+[Formulation of the continuous model, illustrated in Fig.~\ref{fig:sec2_workflow}. The relationship between response $r$ and input $f$ is expressed as:]
+\begin{equation}\label{eq:convolution}
+    r(y,t) = \int_{0}^{t} T_{s}(x,y,t-\zeta)\, f(x,\zeta)\, \mathrm{d}\zeta,
+\end{equation}
+where $T_{s}(x,y,t-\zeta)$, $s = 1, \dots, n$, denotes the transfer function. Discretizing Eq.~\eqref{eq:convolution} yields:
+\begin{equation}\label{eq:discrete}
+    r = T_{s} f,
+\end{equation}
+where $r \in \mathbb{R}^{m}$, $f \in \mathbb{R}^{m}$, and $T_{s} \in \mathbb{R}^{m \times m}$ are defined as:
+\begin{equation}\label{eq:matrices}
+    r =
+    \begin{bmatrix}
+        r(\Delta t) \\
+        r(2\Delta t) \\
+        \vdots \\
+        r(m\Delta t)
+    \end{bmatrix},
+    \quad
+    f =
+    \begin{bmatrix}
+        f(\Delta t) \\
+        f(2\Delta t) \\
+        \vdots \\
+        f(m\Delta t)
+    \end{bmatrix}.
+\end{equation}
+The solution of Eq.~\eqref{eq:discrete} can be formulated as the least-squares problem:
+\begin{equation}\label{eq:lsq}
+    \min \| r - T_{s} f \|_{2}^{2}.
+\end{equation}
+
+\begin{figure*}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=0.9\textwidth]{fig6.pdf}
+    \fbox{\parbox[c][3.0cm][c]{0.88\textwidth}{\centering [Figure 6: Workflow illustration spanning two columns]}}
+    \caption{[Illustration of the reconstruction workflow (inputs, transfer functions, and output).]}
+    \label{fig:sec2_workflow}
+\end{figure*}
+
+\subsubsection{[Domain B: Frequency domain formulation]}\label{subsubsec:sec2_1_2}
+
+[Spectral formulation obtained via Fourier Transform of Eq.~\eqref{eq:convolution}:]
+\begin{equation}\label{eq:freq}
+    \tilde{r}(y,\omega) = \tilde{T}_{s}(x,y,\omega)\,\tilde{f}(x,\omega),
+\end{equation}
+with the pseudo-inverse solution given by:
+\begin{equation}\label{eq:pinv}
+    \tilde{f}(\omega) = \tilde{T}_{s}(\omega)^{+} \tilde{r}(\omega),
+    \qquad
+    \tilde{T}_{s}^{+} = (\tilde{T}_{s}^{H}\tilde{T}_{s})^{-1}\tilde{T}_{s}^{H}.
+\end{equation}
+
+\subsubsection{[Domain C: Wavelet / Transform formulation]}\label{subsubsec:sec2_1_3}
+
+[Description of finite-duration basis expansion. Example of paired subequations `(7a)` and `(7b)` matching the article style:]
+\begin{subequations}\label{eq:wavelet_basis}
+\begin{align}
+    \psi_{m,n}(\tau) &= a_{0}^{-m/2}\psi\!\left(\frac{\tau - n b_{0} a_{0}^{m}}{a_{0}^{m}}\right), \label{eq:wavelet_a} \\
+    \varphi_{M,n}(\tau) &= a_{0}^{-M/2}\varphi\!\left(\frac{\tau - n b_{0} a_{0}^{M}}{a_{0}^{M}}\right). \label{eq:wavelet_b}
+\end{align}
+\end{subequations}
+
+\subsection{[Secondary technique: State estimation-based approach]}\label{subsec:sec2_2}
+
+[Introduction to state-space formulation, starting from the linear equation of motion:]
+\begin{equation}\label{eq:eom}
+    M\ddot{u}(t) + C\dot{u}(t) + K u(t) = f(t),
+\end{equation}
+and its continuous-time state-space representation:
+\begin{equation}\label{eq:ss}
+    \dot{x}(t) = A x(t) + B f(t), \qquad r(t) = G x(t) + J f(t).
+\end{equation}
+
+\subsubsection{[Sub-method A: Markov parameters computation]}\label{subsubsec:sec2_2_1}
+
+[Discussion and discrete convolution representation using forward and inverse Markov parameters.]
+
+\subsubsection{[Sub-method B: Kalman filter approaches]}\label{subsubsec:sec2_2_2}
+
+[Overview of deterministic-stochastic methods, followed by structured item descriptions:]
+\begin{itemize}
+    \item \textbf{[Variant 1 (e.g., Augmented Kalman filter)]:} [Brief description of formulation, strengths, and limitations.]
+    \item \textbf{[Variant 2 (e.g., Dual Kalman filter)]:} [Brief description of formulation, strengths, and limitations.]
+    \item \textbf{[Variant 3 (e.g., Sparse Kalman filter)]:} [Brief description of formulation, strengths, and limitations.]
+    \item \textbf{[Variant 4 (e.g., Unscented / Extended Kalman filter)]:} [Brief description of formulation, strengths, and limitations.]
+\end{itemize}
+
+[Short wrap-up paragraph comparing the model-based methods reviewed in Section~\ref{sec:sec2}.]
+
+%% ============================================================================
+%% SECAO 3: MODEL-BASED APPROACH (PART II)
+%% ============================================================================
+\section{[Model-based approach II: Localization]}\label{sec:sec3}
+
+[Brief introduction linking Section~\ref{sec:sec2} and Section~\ref{sec:sec3}.]
+
+\subsection{[Methods based on time difference and geometry]}\label{subsec:sec3_1}
+
+[Explanation of wave-propagation and geometry-based strategies (e.g., triangulation), illustrated in Fig.~\ref{fig:triangulation}.]
+
+\begin{figure}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=0.9\columnwidth]{fig7.pdf}
+    \fbox{\parbox[c][3.5cm][c]{0.88\columnwidth}{\centering [Figure 7: Geometric localization schematic]}}
+    \caption{[Geometric method for localizing the target source.]}
+    \label{fig:triangulation}
+\end{figure}
+
+\subsection{[Methods based on structural vibrations]}\label{subsec:sec3_2}
+
+[Overview of vibration-based methods, divided into similarity searching and optimization-based techniques.]
+
+\subsubsection{[Similarity searching methods]}\label{subsubsec:sec3_2_1}
+
+[Introductory paragraph followed by bulleted sub-topics with equations and figures (Fig.~\ref{fig:crosscorr} and Fig.~\ref{fig:cosine}):]
+
+\begin{itemize}
+    \item \textbf{[Method 1 (e.g., Time reversal method)]:} [Formulation and center-of-gravity localization equations.]
+    \item \textbf{[Method 2 (e.g., Normalized cross-correlation)]:} [Cross-correlation definition and reference database workflow, see Fig.~\ref{fig:crosscorr}.]
+    \item \textbf{[Method 3 (e.g., Cosine similarity technique)]:} [Cosine metric definition and piecewise reference signal:]
+    \begin{equation}\label{eq:piecewise}
+        p(t) =
+        \begin{cases}
+            \sin\!\left(\dfrac{\pi}{a} t\right), & 0 < t < a, \\
+            0, & a < t < T.
+        \end{cases}
+    \end{equation}
+    \item \textbf{[Method 4 (e.g., Wavelet indexing strategy)]:} [Continuous wavelet transform similarity index.]
+\end{itemize}
+
+\begin{figure*}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=0.9\textwidth]{fig8.pdf}
+    \fbox{\parbox[c][4.2cm][c]{0.88\textwidth}{\centering [Figure 8: Full-width reference database and signal comparison diagram]}}
+    \caption{[General concept of the similarity-based localization method using a reference database.]}
+    \label{fig:crosscorr}
+\end{figure*}
+
+\begin{figure}[t]
+    \centering
+    %% Substitua por: \includegraphics[width=0.75\columnwidth]{fig9.pdf}
+    \fbox{\parbox[c][2.8cm][c]{0.75\columnwidth}{\centering [Figure 9: Vector similarity illustration]}}
+    \caption{[Geometric interpretation of the similarity metric between two vectors.]}
+    \label{fig:cosine}
+\end{figure}
+
+\subsubsection{[Optimization-based methods]}\label{subsubsec:sec3_2_2}
+
+[Objective function formulation, e.g., $E = \sum_{i=1}^{m} \| T_{s}^{(i)} f - r^{(i)} \|$, and discussion of gradient-based vs.\ metaheuristic algorithms (GA, PSO).]
+
+%% ============================================================================
+%% SECAO 4: MACHINE AND DEEP LEARNING APPROACH
+%% ============================================================================
+\section{[Machine and deep learning approach]}\label{sec:sec4}
+
+[Review of ML and DL architectures applied to the problem, highlighting their advantages, limitations, and physics-informed hybrid frameworks.]
+
+\begin{enumerate}
+    \item \textbf{[Key Point / Strategy 1]:} [Explanation of input representation or feature engineering.]
+    \item \textbf{[Key Point / Strategy 2]:} [Explanation of physics-based data augmentation or architecture design.]
+    \item \textbf{[Key Point / Strategy 3]:} [Explanation of attention mechanisms, incremental learning, or explainability.]
+\end{enumerate}
+
+[Discussion referencing the literature summary in Table~\ref{tab:ml_papers}.]
+
+%% Exemplo de tabela ampla de revisao da literatura — equivalente a Table 2
+\begin{table*}[t]
+    \centering
+    \caption{[A summary of representative papers using machine learning and deep learning models.]}
+    \label{tab:ml_papers}
+    \small
+    \begin{tabularx}{\textwidth}{L{1.2cm} Y Y Y}
+        \toprule
+        \textbf{Ref.} & \textbf{Main aim} & \textbf{Technical model} & \textbf{Conclusion} \\
+        \midrule
+        \cite{ref1} & [Objective of study 1] & [Model 1 (e.g., SVM)] & [Main finding or comparative accuracy] \\
+        \addlinespace
+        \cite{ref2} & [Objective of study 2] & [Model 2 (e.g., GNN / CNN)] & [Main finding or comparative accuracy] \\
+        \addlinespace
+        \cite{ref3} & [Objective of study 3] & [Model 3 (e.g., ANN + GA)] & [Main finding or comparative accuracy] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+\subsection{[Machine learning data requirements]}\label{subsec:sec4_1}
+
+[Discussion of data scarcity and data-efficient learning paradigms:]
+\begin{enumerate}
+    \item \textbf{Synthetic data generation:} [Role of physics-based simulations such as FEM.]
+    \item \textbf{Data augmentation:} [Signal transformations to improve generalization.]
+    \item \textbf{Transfer learning:} [Domain adaptation from simulation to experimental targets.]
+    \item \textbf{Self-supervised and unsupervised learning:} [Anomaly detection without baseline labels.]
+    \item \textbf{Zero-shot and few-shot learning:} [Embedding physical laws for rare events.]
+\end{enumerate}
+
+%% ============================================================================
+%% SECAO 5: MATHEMATICAL TECHNIQUES TO DEAL WITH ILL-POSEDNESS
+%% ============================================================================
+\section{[Mathematical techniques to deal with ill-posedness]}\label{sec:sec5}
+
+[Unified notation $r = H f$ and overview of stabilization strategies against measurement noise.]
+
+\subsection{[Posedness investigation]}\label{subsec:sec5_1}
+
+[Singular Value Decomposition (SVD) and condition number analysis:]
+\begin{equation}\label{eq:svd}
+    H = U \Sigma V^{T}, \qquad \operatorname{cond}(H) = \frac{\sigma_{1}}{\sigma_{m}}.
+\end{equation}
+
+\subsection{[The least squares solution]}\label{subsec:sec5_2}
+
+[Objective function $J = \| H f - r \|_{2}$, normal equations, and sensitivity to small singular values $\sigma_{i}$.]
+
+\subsection{[Sensor placement and measurement optimization]}\label{subsec:sec5_3}
+
+[Discussion of sensor count, coherence-based placement strategies, and reduction of the condition number.]
+
+\subsection{[Regularization methods]}\label{subsec:sec5_4}
+
+[Classification into direct and iterative regularization approaches, summarized in Table~\ref{tab:regularization}.]
+
+\subsubsection{[Direct approach for regularization]}\label{subsubsec:sec5_4_1}
+
+[Review of Tikhonov regularization (L-curve, GCV), TSVD, Bayesian regularization, sparse ($l_{1}$) regularization, and hybrid methods.]
+
+\subsubsection{[Iterative regularization]}\label{subsubsec:sec5_4_2}
+
+[Review of Levenberg--Marquardt, Landweber, Kaczmarz, and Krylov subspace methods (CG, LSQR, LSMR), followed by a summary of common weaknesses:]
+\begin{enumerate}[(i)]
+    \item [Convergence to local minima / suboptimal performance.]
+    \item [Computational cost for large-scale iterations.]
+    \item [Sensitivity to algorithm-specific parameters.]
+    \item [Slow convergence in strongly ill-conditioned problems.]
+    \item [Dependence on the quality of the initial guess.]
+\end{enumerate}
+
+%% Exemplo de tabela comparativa agrupada com multirow — equivalente a Table 3
+\begin{table*}[t]
+    \centering
+    \caption{[A comparative summary of direct and iterative regularization methods.]}
+    \label{tab:regularization}
+    \small
+    \begin{tabularx}{\textwidth}{L{1.8cm} L{3.0cm} Y Y}
+        \toprule
+        \multicolumn{2}{l}{\textbf{Regularization method}} & \textbf{Strength} & \textbf{Weakness} \\
+        \midrule
+        \multirow{4}{1.8cm}{\textbf{Direct approach}}
+            & Tikhonov regularization
+            & [Simplicity and global smoothness]
+            & (i) [Ineffective for large-scale problems] \newline (ii) [Not suitable for non-smooth signals] \\
+        \cmidrule(lr){2-4}
+            & Truncated SVD (TSVD)
+            & [Effective against high-frequency instability]
+            & [Lower identification accuracy in general] \\
+        \cmidrule(lr){2-4}
+            & Bayesian regularization
+            & (i) [Adaptive parameter selection] \newline (ii) [Uncertainty quantification]
+            & [Possible non-physical fluctuations] \\
+        \cmidrule(lr){2-4}
+            & Sparse regularization
+            & [Effective for sparse signals in time/space]
+            & (i) [Noise sensitivity] \newline (ii) [Computational complexity] \\
+        \midrule
+        \multirow{4}{1.8cm}{\textbf{Iterative approach}}
+            & Levenberg--Marquardt
+            & \multirow{4}{=}{(i) [Suitable for large-scale inverse problems] \newline (ii) [Higher accuracy and robustness without explicit SVD]}
+            & \multirow{4}{=}{(i) [Suboptimal convergence risk] \newline (ii) [Computational cost] \newline (iii) [Parameter sensitivity] \newline (iv) [Slow convergence] \newline (v) [Initial guess dependence]} \\
+            & Landweber & & \\
+            & Kaczmarz & & \\
+            & Krylov subspace & & \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+%% ============================================================================
+%% SECAO 6: APPLICABILITY AND REAL-TIME FEASIBILITY
+%% ============================================================================
+\section{[Applicability and real-time feasibility]}\label{sec:sec6}
+
+[Critical discussion of latency, computational load, hardware constraints, hybrid physics--data approaches, and practical deployment in real-time monitoring and active control systems.]
+
+%% ============================================================================
+%% SECAO 7: CONCLUSIONS
+%% ============================================================================
+
+%% ============================================================================
+%% SECAO EXPERIMENTAL: DATASETS, METODOS E RESULTADOS DE SEGMENTACAO
+%% Inserida para o estudo de segmentacao de campos fisicos 2D do The Well.
+%% As celulas com \textemdash{} devem ser preenchidas apos a execucao.
+%% ============================================================================
+
+\section{Experimental protocol and comparative results}
+\label{sec:experimental}
+
+\subsection{Datasets and physical segmentation targets}
+\label{subsec:datasets}
+
+Table~\ref{tab:datasets} summarizes the ten two-dimensional datasets selected
+from The Well. The physical target and the corresponding ground-truth rule
+must be specified for each dataset before training. The proposed targets below
+are candidates and must be validated against the variables available in each
+dataset; they are not pre-existing annotation labels.
+
+\begin{table*}[t]
+    \centering
+    \caption{Selected The Well datasets and candidate segmentation targets.}
+    \label{tab:datasets}
+    \small
+    \begin{tabularx}{\textwidth}{L{3.15cm} L{1.65cm} L{2.35cm} Y Y}
+        \toprule
+        \textbf{Dataset} & \textbf{Grid} & \textbf{Physical system} &
+        \textbf{Candidate target} & \textbf{Ground-truth definition / variable} \\
+        \midrule
+        \texttt{acoustic\_scattering} & $256\times256$ & Acoustic scattering &
+        Acoustic-field regions & [Specify field, physical criterion and threshold] \\
+        \addlinespace
+        \texttt{active\_matter} & $256\times256$ & Active matter &
+        Active or organized structures & [Specify order/activity variable and criterion] \\
+        \addlinespace
+        \texttt{euler\_multi\_quadrants} & $512\times512$ & Compressible flow &
+        Density/flow structures & [Specify physical variable(s) and criterion] \\
+        \addlinespace
+        \texttt{gray\_scott\_reaction\_diffusion} & $128\times128$ & Reaction--diffusion &
+        Concentration patterns & [Specify species/concentration and criterion] \\
+        \addlinespace
+        \texttt{helmholtz\_staircase} & $1024\times256$ & Wave propagation &
+        Wave-field regions & [Specify field amplitude/energy and criterion] \\
+        \addlinespace
+        \texttt{planetswe} & $256\times512$ & Shallow-water dynamics &
+        Flow structures & [Specify coordinate-aware physical variable and criterion] \\
+        \addlinespace
+        \texttt{rayleigh\_benard} & $512\times128$ & Thermal convection &
+        Convective structures & [Specify temperature/velocity-derived criterion] \\
+        \addlinespace
+        \texttt{shear\_flow} & $128\times256$ & Shear flow &
+        Vortical/shear regions & [Specify vorticity or shear criterion] \\
+        \addlinespace
+        \texttt{turbulent\_radiative\_layer\_2D} & $128\times384$ & Radiative turbulent flow &
+        Thermodynamic/flow regions & [Specify physical variable(s) and criterion] \\
+        \addlinespace
+        \texttt{viscoelastic\_instability\_v2} & $512\times512$ & Viscoelastic flow &
+        Deformation/flow structures & [Specify stress, strain or flow criterion] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+\subsection{Pre-processing methods}
+\label{subsec:preprocessing}
+
+The pre-processing methods evaluated in this study are listed in
+Table~\ref{tab:preprocessing}. Parameters must be estimated using the training
+partition only and then kept fixed for validation and test data. The unfiltered
+reference condition should use a documented, consistent input scaling.
+
+\begin{table*}[t]
+    \centering
+    \caption{Pre-processing methods and parameters to be reported.}
+    \label{tab:preprocessing}
+    \small
+    \begin{tabularx}{\textwidth}{L{0.65cm} L{3.0cm} L{2.35cm} Y Y}
+        \toprule
+        \textbf{ID} & \textbf{Method} & \textbf{Category} &
+        \textbf{Purpose} & \textbf{Parameters to report} \\
+        \midrule
+        P1 & Z-score normalization & Numerical scaling &
+        Standardize each input channel & [Training mean and standard deviation] \\
+        P2 & Min--Max normalization & Numerical scaling &
+        Map values to a defined interval & [Minimum, maximum and target interval] \\
+        P3 & Robust normalization & Numerical scaling &
+        Reduce sensitivity to extreme values & [Median and interquartile range] \\
+        P4 & Percentile clipping & Numerical scaling &
+        Limit extreme values & [Lower and upper percentiles] \\
+        P5 & Logarithmic transformation & Numerical transform &
+        Reduce positive-value distribution skewness & [Transform, offset and variable(s)] \\
+        P6 & Gaussian filter & Spatial filtering &
+        Suppress high-frequency variation & [Standard deviation $\sigma$ and kernel size] \\
+        P7 & Median filter & Spatial filtering &
+        Reduce impulsive noise & [Window size] \\
+        P8 & Bilateral filter & Spatial filtering &
+        Smooth while retaining selected edges & [Spatial and intensity parameters] \\
+        P9 & Anisotropic diffusion & Spatial filtering &
+        Smooth while preserving selected structures & [Iterations, conductance and step size] \\
+        P10 & Wavelet denoising & Multiscale filtering &
+        Suppress selected wavelet coefficients & [Wavelet family, level and threshold rule] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+\subsection{Segmentation architectures}
+\label{subsec:architectures}
+
+Table~\ref{tab:architectures} summarizes the three segmentation architectures.
+For a fair comparison, the input channels, output classes, loss function,
+training schedule, data split and model-selection rule must be documented.
+For multi-channel physical fields, the input stem of each model must be adapted
+to the number of physical variables used.
+
+\begin{table*}[t]
+    \centering
+    \caption{Deep-learning architectures included in the comparison.}
+    \label{tab:architectures}
+    \small
+    \begin{tabularx}{\textwidth}{L{2.4cm} L{2.55cm} Y Y}
+        \toprule
+        \textbf{Architecture} & \textbf{Family} & \textbf{Role in the study} &
+        \textbf{Implementation details to report} \\
+        \midrule
+        U-Net & Convolutional encoder--decoder &
+        Convolutional baseline for spatial segmentation &
+        [Depth, channels, kernel sizes, normalization and parameter count] \\
+        \addlinespace
+        SegFormer & Hierarchical Transformer &
+        Transformer-based semantic segmentation comparison &
+        [Variant/backbone, input adaptation, decoder and parameter count] \\
+        \addlinespace
+        Mask2Former & Mask-classification Transformer &
+        Mask-based segmentation comparison &
+        [Backbone, number of queries, decoder settings and parameter count] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+\subsection{Post-processing methods}
+\label{subsec:postprocessing}
+
+Table~\ref{tab:postprocessing} lists the post-processing methods. Each method
+must operate on a clearly specified representation (probability map, binary
+mask, multiclass label map or temporal sequence). Thresholds and structural
+parameters must be selected using validation data only.
+
+\begin{table*}[t]
+    \centering
+    \caption{Post-processing methods and parameters to be reported.}
+    \label{tab:postprocessing}
+    \small
+    \begin{tabularx}{\textwidth}{L{0.65cm} L{3.0cm} L{2.5cm} Y Y}
+        \toprule
+        \textbf{ID} & \textbf{Method} & \textbf{Input representation} &
+        \textbf{Purpose} & \textbf{Parameters to report} \\
+        \midrule
+        Q1 & Probability thresholding & Probability map &
+        Convert probabilities into class labels & [Threshold per class] \\
+        Q2 & Morphological opening & Binary/class mask &
+        Remove selected small foreground structures & [Structuring element and size] \\
+        Q3 & Morphological closing & Binary/class mask &
+        Close selected small gaps & [Structuring element and size] \\
+        Q4 & Opening followed by closing & Binary/class mask &
+        Combine removal of protrusions and gap filling & [Operation order and element size] \\
+        Q5 & Small-component removal & Connected-component map &
+        Remove components below an area criterion & [Connectivity and minimum area] \\
+        Q6 & Hole filling & Binary/class mask &
+        Fill enclosed background regions & [Connectivity and hole-size limit] \\
+        Q7 & Connected-component selection & Component labels &
+        Retain components according to a predefined rule & [Connectivity and selection rule] \\
+        Q8 & Watershed & Probability/distance or marker map &
+        Separate touching regions where physically justified & [Markers, connectivity and compactness] \\
+        Q9 & Conditional Random Field (CRF) & Unary scores and pairwise features &
+        Refine spatial label consistency & [Unary/pairwise weights and iterations] \\
+        Q10 & Temporal filtering & Probability/mask sequence &
+        Evaluate temporal consistency across frames & [Temporal window and filter rule] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+\subsection{Experimental design and result reporting}
+\label{subsec:experimental_design}
+
+The full factorial design contains ten pre-processing conditions, three
+architectures and ten post-processing conditions for each dataset. For ten
+datasets, this corresponds to $10\times3\times10\times10=3000$ evaluated
+combinations. Since post-processing is applied to saved model predictions,
+it does not require retraining the segmentation network for every
+post-processing method. The principal training count is therefore
+$10\times3\times10=300$ runs, excluding reference baselines, repetitions and
+hyperparameter-search runs.
+
+Table~\ref{tab:full_results} is the long-format results template. Each row
+represents one dataset--pre-processing--architecture--post-processing
+combination. Duplicate the row for each evaluated combination, or store the
+complete results in a supplementary CSV file and report selected summaries
+in the article.
+
+\begin{table*}[t]
+    \centering
+    \caption{Full experimental results: one row per evaluated combination.}
+    \label{tab:full_results}
+    \scriptsize
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabularx}{\textwidth}{L{2.05cm} L{0.55cm} L{1.45cm} L{1.5cm} c c c c c}
+        \toprule
+        \textbf{Dataset} & \textbf{ID} & \textbf{Pre-processing} &
+        \textbf{Architecture / post-processing} &
+        \textbf{IoU} & \textbf{Dice} & \textbf{Prec.} & \textbf{Rec.} &
+        \textbf{Latency (ms)} \\
+        \midrule
+        \textit{Dataset} & [P/Q] & [Method] & [Model / method] &
+        [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \bottomrule
+    \end{tabularx}
+    \vspace{2pt}
+    \begin{minipage}{\textwidth}
+        \scriptsize
+        \textit{Note:} Report mean and standard deviation across independent
+        runs or test trajectories. Specify whether latency includes
+        post-processing and report the hardware used.
+    \end{minipage}
+\end{table*}
+
+Table~\ref{tab:architecture_comparison} compares the architectures while
+aggregating over the selected pre- and post-processing conditions. The
+aggregation rule must be stated (e.g., mean over all valid combinations or
+performance under the validation-selected configuration).
+
+\begin{table*}[t]
+    \centering
+    \caption{Architecture comparison by dataset.}
+    \label{tab:architecture_comparison}
+    \small
+    \begin{tabularx}{\textwidth}{L{3.0cm} *{3}{>{\centering\arraybackslash}X}}
+        \toprule
+        \textbf{Dataset} & \textbf{U-Net} & \textbf{SegFormer} & \textbf{Mask2Former} \\
+        \midrule
+        \texttt{acoustic\_scattering} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{active\_matter} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{euler\_multi\_quadrants} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{gray\_scott\_reaction\_diffusion} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{helmholtz\_staircase} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{planetswe} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{rayleigh\_benard} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{shear\_flow} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{turbulent\_radiative\_layer\_2D} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \texttt{viscoelastic\_instability\_v2} & [IoU / Dice] & [IoU / Dice] & [IoU / Dice] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+Table~\ref{tab:prepost_effect} isolates the contribution of the
+pre-processing and post-processing stages. Report the change relative to a
+clearly defined baseline, evaluated on the same test cases.
+
+\begin{table*}[t]
+    \centering
+    \caption{Ablation analysis of pre-processing and post-processing effects.}
+    \label{tab:prepost_effect}
+    \small
+    \begin{tabularx}{\textwidth}{L{2.4cm} L{2.3cm} L{2.5cm} Y c c}
+        \toprule
+        \textbf{Dataset} & \textbf{Architecture} & \textbf{Stage / method} &
+        \textbf{Baseline} & \textbf{IoU change} & \textbf{Dice change} \\
+        \midrule
+        \textit{Dataset} & [Architecture] & [P1--P10 or Q1--Q10] &
+        [Reference condition] & [\,] & [\,] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+Table~\ref{tab:best_configuration} reports the best configuration selected
+using validation data and evaluated once on the held-out test set. The
+selection criterion (e.g., validation Dice) must be fixed before test
+evaluation.
+
+\begin{table*}[t]
+    \centering
+    \caption{Best validation-selected configuration and held-out test performance.}
+    \label{tab:best_configuration}
+    \small
+    \begin{tabularx}{\textwidth}{L{2.7cm} L{1.4cm} L{1.65cm} L{1.75cm} c c c}
+        \toprule
+        \textbf{Dataset} & \textbf{Architecture} & \textbf{Pre-processing} &
+        \textbf{Post-processing} & \textbf{IoU} & \textbf{Dice} &
+        \textbf{95\% CI} \\
+        \midrule
+        \texttt{acoustic\_scattering} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{active\_matter} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{euler\_multi\_quadrants} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{gray\_scott\_reaction\_diffusion} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{helmholtz\_staircase} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{planetswe} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{rayleigh\_benard} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{shear\_flow} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{turbulent\_radiative\_layer\_2D} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{viscoelastic\_instability\_v2} & [\,] & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+Table~\ref{tab:cross_dataset} provides a cross-dataset summary. Because the
+physical targets may differ between datasets, values should be compared
+directly only when the label semantics and evaluation protocol are
+sufficiently equivalent. Otherwise, report per-dataset ranks or normalized
+improvements relative to each dataset's baseline.
+
+\begin{table*}[t]
+    \centering
+    \caption{Cross-dataset summary of the selected segmentation approach.}
+    \label{tab:cross_dataset}
+    \small
+    \begin{tabularx}{\textwidth}{L{3.1cm} L{2.1cm} L{2.1cm} c c Y}
+        \toprule
+        \textbf{Dataset} & \textbf{Selected architecture} &
+        \textbf{Selected P / Q} & \textbf{Test Dice} &
+        \textbf{Relative gain (\%)} & \textbf{Generalization notes} \\
+        \midrule
+        \texttt{acoustic\_scattering} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{active\_matter} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{euler\_multi\_quadrants} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{gray\_scott\_reaction\_diffusion} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{helmholtz\_staircase} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{planetswe} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{rayleigh\_benard} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{shear\_flow} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{turbulent\_radiative\_layer\_2D} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \texttt{viscoelastic\_instability\_v2} & [\,] & [\,] & [\,] & [\,] & [\,] \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}
+
+\subsection{Statistical reporting}
+\label{subsec:statistics}
+
+For each reported configuration, provide the mean and standard deviation
+across independent random seeds and/or test trajectories, and confidence
+intervals where appropriate. State the statistical unit used for uncertainty
+estimation. Avoid treating temporally adjacent frames from the same trajectory
+as independent observations. Report class-wise scores for imbalanced
+segmentation tasks, together with macro-averaged scores. The test set must not
+be used to select thresholds, post-processing parameters or model
+hyperparameters.
+
+
+\section{Conclusions}\label{sec:conclusions}
+
+[Synthesis of the main takeaways of the review, highlighting the strengths and limitations of the surveyed methods.]
+
+[Paragraph outlining key open challenges and concrete directions for future research (e.g., real-time feasibility, sparse sensor networks, concurrent events, and advanced learning paradigms).]
+
+%% ============================================================================
+%% SECOES FINAIS OBRIGATORIAS (BACKMATTER — ORDEM IDENTICA AO ARTIGO)
+%% ============================================================================
+\section*{CRediT authorship contribution statement}
+\textbf{[First Author]:} Writing -- review \& editing, Writing -- original draft, Supervision, Resources, Project administration, Investigation, Funding acquisition.
+\textbf{[Second Author]:} Writing -- original draft, Validation, Methodology, Investigation, Formal analysis, Data curation, Conceptualization.
+\textbf{[Third Author]:} Writing -- review \& editing, Supervision, Funding acquisition.
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{Data availability}
+No data was used for the research described in the article.
+
+%% Opcional (descomente se aplicavel):
+%% \section*{Acknowledgements}
+%% [Funding sources, grants, facilities, and collaborators.]
+
+%% ============================================================================
+%% REFERENCIAS (Estilo numerico Elsevier: elsarticle-num)
+%% ============================================================================
+%% OPCAO 1 (Recomendada com arquivo .bib):
+%% \bibliographystyle{elsarticle-num}
+%% \bibliography{references}
+
+%% OPCAO 2 (Bibliografia manual embutida para compilacao imediata):
+\begin{thebibliography}{99}
+
+\bibitem{ref1}
+A.~Author, B.~Author, C.~Author,
+Title of the referenced journal article,
+\textit{Results in Engineering} 26 (2025) 105568.
+\url{https://doi.org/10.1016/j.rineng.2025.105568}
+
+\bibitem{ref2}
+D.~Author, E.~Author,
+Title of another referenced article,
+\textit{Mechanical Systems and Signal Processing} 220 (2024) 111608.
+
+\bibitem{ref3}
+F.~Author,
+Title of a review or conference paper,
+\textit{Computers \& Structures} 89 (23--24) (2011) 2093--2112.
+
+\end{thebibliography}
+
+\end{document}

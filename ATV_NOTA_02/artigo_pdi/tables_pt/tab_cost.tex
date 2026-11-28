@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Tamanho e custo dos modelos (20 épocas, lote 32, entrada nativa de $128\times128$, entrada de referência P0). Melhor época: época do ponto de verificação com maior Dice de validação, intervalo entre as 11 entradas P0 a P10. Latência e vazão medidas com a GPU dedicada após todos os treinos.}
+\label{tab:cost}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\columnwidth}{Y c c c c c}
+\toprule
+\textbf{Arquitetura} & \textbf{Parâm. (M)} & \textbf{Treino (min)} & \textbf{Melhor época} & \textbf{Latência (ms)} & \textbf{qps} \\
+\midrule
+U-Net & 24,4 & 21 & 11 a 20 & 5,58 & 4932 \\
+SegFormer & 27,3 & 35 & 19 a 20 & 15,61 & 2073 \\
+Mask2Former & 47,4 & 273 & 1 a 9 & 38,63 & 552 \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Model size and cost (20 epochs, batch 32, native $128\times128$ input, reference input P0). Best epoch: epoch of the checkpoint with the highest validation Dice, range over the 11 inputs P0 to P10. Latency and throughput measured with a dedicated GPU after all training runs.}
+\label{tab:cost}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\columnwidth}{Y c c c c c}
+\toprule
+\textbf{Architecture} & \textbf{Params (M)} & \textbf{Train (min)} & \textbf{Best epoch} & \textbf{Latency (ms)} & \textbf{fps} \\
+\midrule
+U-Net & 24.4 & 21 & 11 to 20 & 5.58 & 4932 \\
+SegFormer & 27.3 & 35 & 19 to 20 & 15.61 & 2073 \\
+Mask2Former & 47.4 & 273 & 1 to 9 & 38.63 & 552 \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -35,16 +35,25 @@ import config  # noqa: E402
 import limiarizacao as L  # noqa: E402
 import utils  # noqa: E402
 
+# Imagens REAIS (baixadas por src/baixar_midia.py) + a sintetica, que e a unica
+# com gabarito e portanto a unica em que se pode medir IoU.
 IMAGENS = [
+    ("10_sudoku", "Sudoku fotografado (luz desigual)"),
+    ("11_ressonancia", "Ressonancia cerebral T1 (3 populacoes)"),
     ("01_camera", "Camera (histograma bimodal)"),
-    ("02_moedas", "Moedas (fundo desigual)"),
-    ("03_pagina", "Pagina digitalizada (luz desigual)"),
     ("04_sintetica", "Sintetica com gabarito"),
 ]
 
 
 def carregar(nome: str) -> np.ndarray:
-    return utils.ler_cinza(config.DIR_IMAGENS / f"{nome}.png")
+    """Le a imagem pelo nome, aceitando .png ou .jpg."""
+    for ext in (".png", ".jpg", ".jpeg"):
+        cam = config.DIR_IMAGENS / f"{nome}{ext}"
+        if cam.exists():
+            return utils.ler_cinza(cam)
+    raise FileNotFoundError(
+        f"imagem '{nome}' nao encontrada em {config.DIR_IMAGENS}. "
+        "Rode antes: python src/baixar_midia.py")
 
 
 # ---------------------------------------------------------------------------
@@ -407,7 +416,7 @@ def main() -> None:
               f"eta={L.separabilidade(img):.3f}")
 
     # Varredura de hiperparametros apenas nas duas imagens mais ilustrativas
-    for nome in ("03_pagina", "04_sintetica"):
+    for nome in ("10_sudoku", "04_sintetica"):
         fig_sensibilidade(carregar(nome), nome)
 
     # ---- Tabelas -----------------------------------------------------------
